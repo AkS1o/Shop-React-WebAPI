@@ -9,12 +9,12 @@ const CardProducts = ({Id, Ganre, Name, Ratings, Price }) => {
     return (
         <Fragment>
             <div className="col-3">
-                <Link to="#" className="card">
+                <Link to="#" className="card card-products">
                     <div className="image-wrap">
                         <img src="../img/bf2048.png" alt="img" className="img-fluid" />
                     </div>
                     <div className="card-body">
-                        <div className="ganre">{Ganre}</div>
+                        <div className="subtitle">{Ganre}</div>
                         <div className="title">{Name}</div>
                         <div className="d-flex justify-content-between">
                             <div className="ratings">

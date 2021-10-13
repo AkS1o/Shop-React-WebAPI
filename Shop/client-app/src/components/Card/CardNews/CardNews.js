@@ -5,12 +5,12 @@ const CardNews = () => {
     return (
         <Fragment>
             <div className="col-4">
-                <div className="card">
+                <div className="card card-news">
                     <Link to="#" className="image-wrap">
-                        <img src="../img/news/avel-chuklanov-DUmFLtMeAbQ-unsplash.jpg" alt="img" className="image" />
+                        <img src="../img/news/avel-chuklanov-DUmFLtMeAbQ-unsplash.jpg" alt="img" className="img-fluid" />
                     </Link>
                     <div className="card-body">
-                        <div className="data">25 April, 2020</div>
+                        <div className="subtitle">25 April, 2020</div>
                         <h4 className="title">
                             <Link to="#">Choose the best solution for your business</Link>
                         </h4>

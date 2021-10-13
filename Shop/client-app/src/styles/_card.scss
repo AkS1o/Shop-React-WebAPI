@@ -1,0 +1,31 @@
+.card {
+    display: block;
+    margin: 1rem 0;
+    transition: .4s; &:hover {
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, 
+        rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        transition: .4s;
+    }
+
+    .image-wrap {
+        display: block;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .card-body {
+        background-color: $cardBg;
+        color: #fff;
+        padding: 1rem;
+        box-shadow: $cardBS;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        margin-bottom: 0.5rem;
+    }
+
+    .title {
+        margin-bottom: 0.5rem;
+    }
+}
