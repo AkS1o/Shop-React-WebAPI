@@ -1,0 +1,23 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    .page-item{
+        margin: 0 .3rem;
+        &.active {
+            .page-link {
+                background-color:  $colorSecondary;
+                border-color:  $colorSecondary;
+            }
+        }
+    }
+    .page-link {
+        color: $colorPrimary;
+        line-height: 40px;
+        border: 1px solid $colorPrimary;
+        padding: 0.5rem .75rem;
+        text-transform: uppercase;
+        &:hover {
+            border-color: $colorSecondary;
+        }
+    }
+}

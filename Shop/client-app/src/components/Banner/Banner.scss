@@ -1,0 +1,46 @@
+.banner {
+	display: flex;
+	align-items: center;
+	height: 100vh;
+	.inner {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		height: 100%;
+		h3{ 
+			position: relative;
+		}
+		h3:after{
+			content: 'best creative studio \A we make great ideas happen';
+			position: absolute;
+			top: 100%;
+		    left: 0;
+		    color: transparent;
+		    transform: scale(1, -1);
+		    white-space: pre;
+		    -webkit-text-stroke-width: 1.5px;
+  			-webkit-text-stroke-color: #888;
+
+		}
+		.content {
+			display: flex;
+    		align-items: flex-end;
+		}
+		.tag{ 
+			margin-left: 135px;
+			li{
+				color: $colorSecondary;
+				font-size: 24px;
+				text-transform: uppercase;
+			}
+			li:before{
+				content: '\\\\';
+				margin-right: 10px;
+			}
+		}
+	}
+	.watch {
+		height: 350px;
+		background-color: $colorSecondary;
+	}
+}

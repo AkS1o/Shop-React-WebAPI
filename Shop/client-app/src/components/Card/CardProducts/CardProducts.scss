@@ -1,0 +1,50 @@
+.products {
+    .card {
+        display: block;
+        color: #fff;
+        margin: 1rem 0;
+        transition: .4s;
+        &:hover {
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, 
+            rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            transition: .4s;
+            .image-wrap::after {
+                display: block;
+            }
+            img {
+                transform: scale(1.2);
+                transition: 1.4s;
+            }
+        }
+        .image-wrap {
+            display: block;
+            overflow: hidden;
+            position: relative;
+            &::after {
+                background-color: rgba($color: #000000, $alpha: 0.3);
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                display: none;
+                height: 100%;
+                width: 100%;
+            }
+        }
+        img {
+            transition: 1.4s;
+        }
+        .ganre {
+            font-size: 12px;
+            margin-bottom: 0.25rem;
+        }
+        .title {
+            margin-bottom: 0.75rem;
+        }
+        .ratings svg {
+            margin-left: 0.5rem;
+        }
+    }
+}

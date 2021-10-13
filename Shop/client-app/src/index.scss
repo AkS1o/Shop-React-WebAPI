@@ -1,0 +1,29 @@
+@import "./styles/color";
+@import "./styles/buttons";
+@import "./styles/fonts";
+@import "./styles/general";
+
+@import "./components/Logo/Logo.scss";
+
+@import "./components/Header/Header.scss";
+@import "./components/Footer/Footer.scss";
+
+@import "./components/Login/Login.scss";
+@import "./components/Register/Register.scss";
+
+@import "./components/Grid/GridNews/GridNews.scss";
+@import "./components/Grid/GridProducts/GridProducts.scss";
+
+@import "./components/Card/CardNews/CardNews.scss";
+@import "./components/Card/CardProducts/CardProducts.scss";
+
+@import "./components/NotFound/NotFound.scss";
+@import "./components/Banner/Banner.scss";
+@import "./components/Pagination/Pagination.scss";
+
+@import "./components/Sitebar/SitebarProducts/SitebarProducts.scss";
+@import "./components/Sitebar/SitebarAdmin/SitebarAdmin.scss";
+
+@import "./components/Slider/Slider.scss";
+
+

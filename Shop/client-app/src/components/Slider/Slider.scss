@@ -1,0 +1,19 @@
+.slider{
+    .slide-wrap{
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+    .slide {
+        position: relative;
+        display: none;
+        align-items: center;
+        width: 60%;
+        transition: transform .6s ease;
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+    .slide.active {
+        display: block;
+    }
+}

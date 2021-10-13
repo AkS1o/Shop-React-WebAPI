@@ -1,0 +1,34 @@
+.notFound {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    z-index: 110;
+    .text-wrap{
+        overflow: hidden;
+    }
+    .full {
+        flex: none;
+    }
+    h1{
+        color: transparent;
+        font-size: 17vh;
+        line-height: 0.8;
+        color: $colorPrimary;
+    }
+    h1.stroke {
+        color: transparent;
+        -webkit-text-stroke-width: 1.5px;
+	    -webkit-text-stroke-color: $colorSecondary;
+    }
+    .top{
+        transform: translate3d(0,20%,0);
+    }
+    .bottom{
+        transform: translate3d(0,-40%,0);
+    }
+}
