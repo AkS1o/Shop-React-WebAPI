@@ -1,8 +1,10 @@
-class APIService {
-    URl = "https://database-d0d55-default-rtdb.firebaseio.com/games.json";
+import { Component } from "react";
 
-    fetchContactList() {
-        const Games = fetch(this.URl)
+class APIService extends Component {
+    apiGames = "/api/Games/";
+
+    async fetchContactList() {
+        const Games = await fetch(this.apiGames + "get-games")
             .then(response => {
                 return response.json();
             })
@@ -13,21 +15,21 @@ class APIService {
                     return { Games: data };
             })
             .catch(error => console.log(error));
-        return Games; 
+        return Games;
     }
 
-    updateDatabse = (games) => {
-        fetch(this.URl,
-            {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                method: "PUT",
-                body: JSON.stringify(games)
-            })
-            .then(res => console.log(res))
-            .catch(res => console.log(res))
-    }
+    //updateDatabse = (games) => {
+    //    fetch(this.URl,
+    //        {
+    //            headers: {
+    //                'Content-Type': 'application/json'
+    //            },
+    //            method: "PUT",
+    //            body: JSON.stringify(games)
+    //        })
+    //        .then(res => console.log(res))
+    //        .catch(res => console.log(res))
+    //}
 }
 
 const apiService = new APIService();
