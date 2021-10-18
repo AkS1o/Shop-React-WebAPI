@@ -34,8 +34,8 @@ const App = () => {
           <Route path="/register" component={Register} />
           <Route path="/admin" component={Admin} />
         </Provider>
-        <Route path="*" component={NoMatchPage} />
       </Switch>
+      {/* <Route exact path="*" component={NoMatchPage} /> */}
     </Router>
   )
 }

@@ -1,19 +1,51 @@
 .slider{
-    .slide-wrap{
+    .slide-show{
         position: relative;
-        width: 100%;
         overflow: hidden;
+    }
+    .slide-carousel{
+        transition: 1s ease;
+        position: relative;
+        display: flex;
+        width: 2672px;
     }
     .slide {
         position: relative;
-        display: none;
-        align-items: center;
-        width: 60%;
-        transition: transform .6s ease;
-        backface-visibility: hidden;
-        perspective: 1000px;
-    }
-    .slide.active {
         display: block;
+        width: 628px;
+        margin: 0 20px;
+        .content {
+            padding: 1rem;
+            h3, p {
+                color: #fff;
+                margin-bottom: .5rem;
+            }
+            h3 { text-transform: capitalize; }
+            .price { 
+                color: #fff;
+                font-size: 36px;
+                font-weight: 600;
+            }
+            .btn { margin-left: 20px; }
+        }
+    }
+    span{
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2rem;
+        height: 2rem;
+        margin-top: -1rem;
+        border-radius: 50%;
+        svg {
+            color: black;
+            font-size: 1rem;
+        }
+
+        &[data-controls="prev"] { left: 0; }
+        &[data-controls="next"] { right: 0; }
     }
 }

@@ -5,6 +5,7 @@
 	display: inline-block;
 	font-family: $fontSecondary;
 	font-size: 16px;
+	border: 2px solid;
 	border-color: transparent;
 	border-radius: 5px;
 	padding: 0.55rem 1.25rem;
@@ -20,8 +21,7 @@
 .btn-outline-primary{
 	background-color: transparent;
 	color: $colorSecondary;
-	border: 2px solid $colorSecondary;
-	transition: 0.3s;
+	border-color: $colorSecondary;
 	&:hover {
 		background-color: $colorSecondary;
 		color: $colorPrimary;
@@ -38,8 +38,7 @@
 .btn-outline-dark{
 	background-color: transparent;
 	color: $colorPrimary;
-	border: 2px solid #1b1b1b;
-	transition: 0.3s;
+	border-color: #1b1b1b;
 	&:hover {
 		background-color: #141414;
 	}
@@ -55,8 +54,7 @@
 .btn-outline-white{
 	background-color: transparent;
 	color: #fff;;
-	border: 2px solid #fff;
-	transition: 0.3s;
+	border-color: #fff;
 	&:hover {
 		color: #141414;
 		background-color: #fff;

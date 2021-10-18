@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Fragment } from "react";
 
 export default class NotFound extends Component {
-    componentDidMount() {
-        window.addEventListener('resize', this.resizeEvent);
-    }
+    // componentDidMount() {
+    //     window.addEventListener('resize', this.resizeEvent);
+    // }
 
-    hide() {
-        var notFound = document.getElementById('notFound').value;
-        console.log("notFound", notFound);
-    }
+    // hide() {
+    //     var notFound = document.getElementById('notFound').value;
+    //     console.log("notFound", notFound);
+    // }
 
     render() {
         return (

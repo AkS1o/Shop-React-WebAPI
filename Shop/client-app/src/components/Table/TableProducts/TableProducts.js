@@ -1,7 +1,8 @@
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faImages, faEye, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const TableProducts = () => {
     return (
@@ -31,9 +32,16 @@ const TableProducts = () => {
                         <td>100</td>
                         <td>Active</td>
                         <td className="table-action">
-                            <FontAwesomeIcon icon={faEye} />
-                            <FontAwesomeIcon icon={faEdit} />
-                            <FontAwesomeIcon icon={faTrash} />
+                            <Link to="/admin/views-product">
+                                <FontAwesomeIcon icon={faEye} />
+                            </Link>
+                            <Link to="/admin/edit-product">
+                                <FontAwesomeIcon icon={faEdit} />
+                            </Link>
+                            <Link to="/admin/delete-product">
+                                <FontAwesomeIcon icon={faTrash} />
+                            </Link>
+                            <FontAwesomeIcon icon={faImages} />
                         </td>
                     </tr>
                     <tr>
