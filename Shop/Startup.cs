@@ -77,6 +77,7 @@ namespace Shop
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+            AppDbInitializer.Seed(app);
         }
     }
 }
