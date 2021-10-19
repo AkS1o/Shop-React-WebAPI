@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Shop.Data;
+using Shop.Data.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,8 +30,11 @@ namespace Shop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddMvc().AddJsonOptions(option => option.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddControllers();
+            services.AddTransient<GamesService>();
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "client-app/build";
@@ -48,6 +54,8 @@ namespace Shop
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shop v1"));
             }
+
+            app.UseSpaStaticFiles();
 
             app.UseHttpsRedirection();
 
@@ -69,6 +77,7 @@ namespace Shop
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+            AppDbInitializer.Seed(app);
         }
     }
 }
