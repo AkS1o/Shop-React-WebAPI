@@ -17,6 +17,8 @@ import Register from './components/Register/Register';
 import Admin from "./views/Admin/Admin";
 import NoMatchPage from "./views/NoMatchPage/NoMatchPage";
 
+import Product from "./views/Products/Product"
+
 import "./../node_modules/bootstrap/dist/css/bootstrap-grid.min.css"
 import "./index.scss"
 
@@ -33,6 +35,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/admin" component={Admin} />
+          <Route path="/product/id" component={Product} />
         </Provider>
       </Switch>
       {/* <Route exact path="*" component={NoMatchPage} /> */}
