@@ -5,10 +5,14 @@ using System.Threading.Tasks;
 
 namespace Shop.Data.Models
 {
-    public class Genre
+    public class GamePlatform
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public virtual ICollection<GameGenre> GameGenres { get; set; }
+        public int GameId { get; set; }
+        public Game Game;
+        public int PlatformId { get; set; }
+        public Platform Platform;
+
     }
+
 }
