@@ -32,7 +32,10 @@ namespace Shop
         {
             services.AddMvc().AddJsonOptions(option => option.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddControllers();
+            
             services.AddTransient<GamesService>();
+            services.AddTransient<GenreService>();
+            services.AddTransient<PlatformService>();
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSpaStaticFiles(configuration =>
