@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux"
 import { useEffect } from "react";
 
-import { getAllGames } from "../../actions/GamesAction"
+import { getAllGames } from "../../actions/GameListAction"
 
 import apiService from "../../services/APIService";
 
@@ -12,15 +12,15 @@ import Pagination from "../Pagination/Pagination";
 import TableProducts from "../Table/TableProducts/TableProducts";
 
 
-const MainProduct = ({ Games, getAllGames }) => {
+const MainProduct = ({ GameList, getAllGames }) => {
 
     useEffect(() => {
         apiService.fetchContactList().then(data => {
-            getAllGames(data);
+            getAllGames(data.List);
         });
     }, []);
 
-    const item = Games.map(listItem => {
+    const item = GameList.map(listItem => {
         return (
             <TableProducts key={listItem.Id}
                 {...listItem} />
@@ -30,18 +30,18 @@ const MainProduct = ({ Games, getAllGames }) => {
         <Fragment>
             <Link to="/admin/add-product" className="btn btn-white">Add Contact</Link>
             <table className="table">
-            <thead>
-                <tr>
-                    <th>
-                        <input type="checkbox" />
-                    </th>
-                    <th>Product</th>
-                    <th>Added Date</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" />
+                        </th>
+                        <th>Product</th>
+                        <th>Added Date</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {item.length > 0 ? item : <h4>Contact list is empty.</h4>}
@@ -55,9 +55,9 @@ const MainProduct = ({ Games, getAllGames }) => {
     )
 }
 
-const mapStateToProps = ({ GamesReducer }) => {
-    const { Games } = GamesReducer;
-    return { Games }
+const mapStateToProps = ({ GameListReducer }) => {
+    const { GameList } = GameListReducer;
+    return { GameList }
 }
 
 const mapDispatchToProps = {
