@@ -5,19 +5,19 @@ import { connect } from "react-redux"
 import CardProducts from "../../Card/CardProducts/CardProducts";
 
 // Import Actions
-import { getAllGames } from "../../../actions/GamesAction"
+import { getAllGames } from "../../../actions/GameListAction"
 
 // Import Services
 import apiService from "../../../services/APIService";
 
-const GridProducts = ({ Games, getAllGames }) => {
+const GridProducts = ({ GameList, getAllGames }) => {
 	useEffect(() => {
 		apiService.fetchContactList().then(data => {
-			getAllGames(data);
-		});
+			getAllGames(data.List);
+		})
 	}, []);
 
-	const item = Games.map(listItem => {
+	const item = GameList.map(listItem => {
 		return (
 			<CardProducts key={listItem.Id}
 				{...listItem} />
@@ -33,9 +33,9 @@ const GridProducts = ({ Games, getAllGames }) => {
 	)
 }
 
-const mapStateToProps = ({ GamesReducer }) => {
-	const { Games } = GamesReducer;
-	return { Games }
+const mapStateToProps = ({ GameListReducer }) => {
+	const { GameList } = GameListReducer;
+	return { GameList }
 }
 
 const mapDispatchToProps = {
