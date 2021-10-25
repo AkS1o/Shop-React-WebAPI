@@ -17,6 +17,22 @@ const SitebarAdmin = () => {
                         <h3>Products</h3>
                     </Link>
                 </div>
+                <div className="nav-item">
+                    <Link className="nav-link" to="/admin/genres">
+                        <span className="menu-icon">
+                            <FontAwesomeIcon icon={faShoppingCart} />
+                        </span>
+                        <h3>Genres</h3>
+                    </Link>
+                </div>
+                <div className="nav-item">
+                    <Link className="nav-link" to="/admin/platforms">
+                        <span className="menu-icon">
+                            <FontAwesomeIcon icon={faShoppingCart} />
+                        </span>
+                        <h3>Planforms</h3>
+                    </Link>
+                </div>
                 <div className="sidebar-menu">
                     <Link className="nav-link" to="#">
                         <span className="menu-icon">
