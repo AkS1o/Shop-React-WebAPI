@@ -5,7 +5,23 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages, faEye, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 
-const TableProducts = ({ Ganre, Name, Ratings, Price, Date }) => {
+import APIService from "../../../services/APIService"
+
+import { deleteGame, getCurrentGame } from "../../../actions/GameListAction"
+
+const TableProducts = ({ Id, Ganre, Name, Quantity, Price, ReleaseDate, GameList, deleteGame, getCurrentGame }) => {
+    let onDeleteGame = () => {
+        const index = GameList.findIndex(elem => elem.Id === Id);
+        const tmpList = GameList.slice();
+        tmpList.splice(index, 1);
+        deleteGame(tmpList);
+        APIService.deleteGame(Id);
+    }
+    let onGetCurrentGame = () => {
+        const index = GameList.findIndex(elem => elem.Id === Id);
+        const game = GameList[index];
+        getCurrentGame(game)
+    }
     return (
         <Fragment>
 
@@ -14,18 +30,18 @@ const TableProducts = ({ Ganre, Name, Ratings, Price, Date }) => {
                     <input type="checkbox" />
                 </td>
                 <td>{Name}</td>
-                <td>{Date} </td>
+                <td>{ReleaseDate} </td>
                 <td>{Price}</td>
-                <td>{Ratings}</td>
+                <td>{Quantity}</td>
                 <td>Active</td>
                 <td className="table-action">
                     <Link to="/admin/views-product">
                         <FontAwesomeIcon icon={faEye} />
                     </Link>
-                    <Link to="/admin/edit-product">
+                    <Link onClick={onGetCurrentGame} to="/admin/edit-product">
                         <FontAwesomeIcon icon={faEdit} />
                     </Link>
-                    <Link to="/admin/delete-product">
+                    <Link onClick={onDeleteGame} to="/admin/">
                         <FontAwesomeIcon icon={faTrash} />
                     </Link>
                     <FontAwesomeIcon icon={faImages} />
@@ -35,12 +51,14 @@ const TableProducts = ({ Ganre, Name, Ratings, Price, Date }) => {
     )
 }
 
-const mapStateToProps = ({ GamesReducer }) => {
-    const { Games } = GamesReducer;
-    return { Games }
+const mapStateToProps = ({ GameListReducer }) => {
+    const { GameList } = GameListReducer;
+    return { GameList }
 }
 
 const mapDispatchToProps = {
+    deleteGame,
+    getCurrentGame
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableProducts);
