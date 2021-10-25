@@ -20,7 +20,7 @@ namespace Shop.Controllers
         }
 
         [HttpGet("get-platforms")]
-        public IActionResult GetGenres()
+        public IActionResult GetPlatforms()
         {
             var platforms = _platformService.GetPlatforms();
             return Ok(platforms);
@@ -34,7 +34,7 @@ namespace Shop.Controllers
         }
 
         [HttpDelete("delete-platform/{id}")]
-        public IActionResult Deleteplatform(int id)
+        public IActionResult DeletePlatform(int id)
         {
             try
             {
