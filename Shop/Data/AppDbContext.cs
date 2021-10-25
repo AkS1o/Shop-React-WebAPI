@@ -18,6 +18,9 @@ namespace Shop.Data
         public DbSet<Platform> Platforms { get; set; }  
         public DbSet<GameGenre> GameGenres { get; set; }
         public DbSet<GamePlatform> GamePlatforms { get; set; }
-
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Buyer> Buyers { get; set; }
+        public DbSet<News> News { get; set; }
+        
     }
 }
