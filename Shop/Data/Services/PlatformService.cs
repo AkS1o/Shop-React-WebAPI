@@ -33,7 +33,7 @@ namespace Shop.Data.Services
             _context.SaveChanges();
         }
 
-        public void DeletPlatforms(int id)
+        public void DeletePlatforms(int id)
         {
             var platform = _context.Platforms.FirstOrDefault(b => b.Id == id);
 

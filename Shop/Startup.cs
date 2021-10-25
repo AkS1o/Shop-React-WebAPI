@@ -34,8 +34,11 @@ namespace Shop
             services.AddControllers();
             
             services.AddTransient<GamesService>();
-            services.AddTransient<GenreService>();
+            services.AddTransient<GenreService>();       
             services.AddTransient<PlatformService>();
+            services.AddTransient<AdminService>();
+            services.AddTransient<BuyerService>();
+            services.AddTransient<NewsService>();
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSpaStaticFiles(configuration =>

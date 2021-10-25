@@ -38,7 +38,7 @@ namespace Shop.Controllers
         {
             try
             {
-                _platformService.DeletPlatforms(id);
+                _platformService.DeletePlatforms(id);
                 return Ok();
             }
             catch (Exception ex)
