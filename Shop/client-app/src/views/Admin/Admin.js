@@ -6,6 +6,11 @@ import ViewsProduct from "../../components/Product/ViewsProduct"
 import AddProduct from "../../components/Product/AddProduct"
 import EditProduct from "../../components/Product/EditProduct"
 import DeleteProduct from "../../components/Product/DeleteProduct"
+import MainGenres from "../Genre/MainGenres"
+import AddGenre from "../Genre/AddGenre"
+
+import MainPlatforms from "../Platform/MainPlatform"
+import AddPlatform from "../Platform/AddPlatform"
 
 const Admin = () => {
     return (
@@ -19,6 +24,14 @@ const Admin = () => {
                     <Route path="/admin/add-product" component={AddProduct} />
                     <Route path="/admin/edit-product" component={EditProduct} />
                     <Route path="/admin/delete-product" component={DeleteProduct} />
+
+                    <Route path="/admin/genres" component={MainGenres} />
+                    <Route path="/admin/add-genre" component={AddGenre} />
+
+                    <Route path="/admin/platforms" component={MainPlatforms} />
+                    <Route path="/admin/add-platform" component={AddPlatform} />
+
+
                 </Switch>
             </section>
         </main>
