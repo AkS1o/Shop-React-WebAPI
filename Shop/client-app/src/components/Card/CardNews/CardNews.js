@@ -1,20 +1,23 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 
-const CardNews = () => {
+import { connect } from "react-redux"
+
+const CardNews = ({Id, Name, Publisher, ShortDescription, Image, ReleaseDate }) => {
     return (
         <Fragment>
             <div className="col-4">
                 <div className="card card-news">
                     <Link to="#" className="image-wrap">
-                        <img src="../img/news/avel-chuklanov-DUmFLtMeAbQ-unsplash.jpg" alt="img" className="img-fluid" />
+                        <img src={ Image } alt="img" className="img-fluid" />
                     </Link>
                     <div className="card-body">
-                        <div className="subtitle">25 April, 2020</div>
+                        <div className="subtitle">{ReleaseDate}</div>
+                        <div className="subtitle">{Publisher}</div>
                         <h4 className="title">
-                            <Link to="#">Choose the best solution for your business</Link>
+                            <Link to="#">{ Name }</Link>
                         </h4>
-                        <div className="text">No matter what he does, every person on earth plays a central role in the history.</div>
+                        <div className="text">{ ShortDescription }</div>
                         <Link to="#">read more</Link>
                     </div>
                 </div>
@@ -23,4 +26,13 @@ const CardNews = () => {
     )
 }
 
-export default CardNews;
+const mapStateToProps = ({ NewsListReducer }) => {
+    const { NewsList } = NewsListReducer;
+    return { NewsList }
+}
+
+const mapDispatchToProps = {
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardNews);
