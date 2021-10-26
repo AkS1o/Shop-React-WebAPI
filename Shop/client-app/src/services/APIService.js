@@ -4,6 +4,7 @@ class APIService extends Component {
     apiGames = "/api/Games/";
     apiGenres = "/api/Genres/"
     apiPlatforms = "/api/Platform/"
+    apiNews = "/api/News/"
 
     async fetchContactList() {
         console.log("apiGames", this.apiGames + "get-games")
@@ -142,6 +143,61 @@ class APIService extends Component {
                 },
                 method: "DELETE",
                 body: JSON.stringify(Id)
+            })
+            .then(res => console.log(res))
+            .catch(res => console.log(res))
+    }
+
+    async fetchNewsList() {
+        const List = await fetch(this.apiNews + "get-news")
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                if (data === null)
+                    return { List: [] }
+                else
+                    return { List: data };
+            })
+            .catch(error => console.log(error));
+        return List;
+    }
+
+    async addNews(News) {
+        await fetch(`${this.apiNews}add-news`,
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify(News)
+            })
+            .then(res => console.log(res))
+            .catch(res => console.log(res))
+    }
+
+    async deleteNews(Id) {
+        await fetch(`${this.apiNews}delete-news/${Id}`,
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: "DELETE",
+                body: JSON.stringify(Id)
+            })
+            .then(res => console.log(res))
+            .catch(res => console.log(res))
+    }
+
+    async updateNews(News) {
+        await fetch(`${this.apiNews}update-news`,
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: "PUT",
+                body: JSON.stringify(News)
             })
             .then(res => console.log(res))
             .catch(res => console.log(res))
