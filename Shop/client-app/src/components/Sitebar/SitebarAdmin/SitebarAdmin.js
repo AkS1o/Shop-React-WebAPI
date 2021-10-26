@@ -34,7 +34,7 @@ const SitebarAdmin = () => {
                     </Link>
                 </div>
                 <div className="sidebar-menu">
-                    <Link className="nav-link" to="#">
+                    <Link className="nav-link" to="/admin/news">
                         <span className="menu-icon">
                             <FontAwesomeIcon icon={faNewspaper} />
                         </span>
