@@ -77,7 +77,7 @@ class AddGenre extends Component {
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <Link to="/admin/products" class="btn btn-outline-white mx-2">Back</Link>
+                        <Link to="/admin/genres" class="btn btn-outline-white mx-2">Back</Link>
                         <input type="submit" class="btn btn-primary mx-2" value="Create" />
                     </div>
                 </form>
