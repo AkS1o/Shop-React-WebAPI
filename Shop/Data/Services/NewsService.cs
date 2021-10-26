@@ -27,6 +27,7 @@ namespace Shop.Data.Services
                 Name = news.Name,   
                 Publisher = news.Publisher,
                 Description = news.Description,
+                ShortDescription = news.ShortDescription,
                 Image = news.Image,
                 ReleaseDate = news.ReleaseDate,
 
@@ -49,6 +50,26 @@ namespace Shop.Data.Services
             {
                 throw new Exception($"news with id: {id} not found");
             }
+        }
+
+        public News СhangeNews(News news)
+        {
+            var _news = _context.News.FirstOrDefault(n => n.Id == news.Id);
+
+
+            if (_news != null)
+            {
+                _news.Name = news.Name;
+                _news.Publisher = news.Publisher;
+                _news.Description = news.Description;
+                _news.ShortDescription = news.ShortDescription;
+                _news.Image = news.Image;
+                _news.ReleaseDate = news.ReleaseDate;
+
+                _context.SaveChanges();
+            }
+
+            return _news;
         }
     }
 }

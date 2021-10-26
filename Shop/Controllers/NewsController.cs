@@ -47,5 +47,12 @@ namespace Shop.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("update-news")]
+        public IActionResult СhangeNews([FromBody] News news)
+        {
+            var updatenews = _newsService.СhangeNews(news);
+            return Ok(updatenews);
+        }
     }
 }
