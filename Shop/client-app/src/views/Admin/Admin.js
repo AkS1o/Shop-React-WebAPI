@@ -12,6 +12,10 @@ import AddGenre from "../Genre/AddGenre"
 import MainPlatforms from "../Platform/MainPlatform"
 import AddPlatform from "../Platform/AddPlatform"
 
+import MainNews from "../News/AdminNews/MainNews"
+import AddNews from "../News/AdminNews/AddNews"
+import EditNews from "../News/AdminNews/EditNews"
+
 const Admin = () => {
     return (
         <main className="container-fluid body-wrap">
@@ -30,6 +34,10 @@ const Admin = () => {
 
                     <Route path="/admin/platforms" component={MainPlatforms} />
                     <Route path="/admin/add-platform" component={AddPlatform} />
+
+                    <Route path="/admin/news" component={MainNews} />
+                    <Route path="/admin/add-news" component={AddNews} />
+                    <Route path="/admin/edit-news" component={EditNews} />
 
 
                 </Switch>
