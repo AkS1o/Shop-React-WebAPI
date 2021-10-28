@@ -1,0 +1,31 @@
+.contact{
+    textarea{
+        height: 200px;
+    }
+    .card {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .card-body{
+        svg {
+            color: $colorSecondary;
+            font-size: 2rem;
+            margin-right: 1rem;
+            margin-bottom: .5rem;
+        }
+    }
+    .socials{
+        display: flex;
+        li {
+           color: $colorPrimary;
+           margin: 0 .25rem;
+        }
+        svg {
+            color: $colorPrimary;
+            font-size: 1.5rem;
+            &:hover { color: $colorSecondary; }
+        }
+    }
+}
