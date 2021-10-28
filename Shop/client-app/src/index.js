@@ -17,30 +17,34 @@ import Register from './components/Register/Register';
 import Admin from "./views/Admin/Admin";
 import NoMatchPage from "./views/NoMatchPage/NoMatchPage";
 
-import Product from "./views/Products/Product"
+import ProductDetails from "./views/Products/ProductDetails"
+import NewsDetails from "./views/News/NewsDetails"
 
 import "./../node_modules/bootstrap/dist/css/bootstrap-grid.min.css"
 import "./index.scss"
 
 const App = () => {
-  return (
-    <Router>
-      <Switch>
+    return (
         <Provider store={store}>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/products" component={() => <Products />} />
-          <Route path="/news" component={News} />
-          <Route path="/contacts" component={Contacts} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/admin" component={Admin} />
-          <Route path="/product/id" component={Product} />
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/about" component={About} />
+                    <Route path="/products" component={() => <Products />} />
+                    <Route path="/news" component={News} />
+                    <Route path="/contacts" component={Contacts} />
+                    <Route path="/login" component={Login} />
+                    <Route path="/register" component={Register} />
+                    <Route path="/admin" component={Admin} />
+
+                    <Route path="/productsId" component={ProductDetails} />
+                    <Route path="/newsId" component={NewsDetails} />
+
+                    <Route exact path="*" component={NoMatchPage} />
+                </Switch>
+            </Router>
         </Provider>
-      </Switch>
-      {/* <Route exact path="*" component={NoMatchPage} /> */}
-    </Router>
-  )
+    )
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));

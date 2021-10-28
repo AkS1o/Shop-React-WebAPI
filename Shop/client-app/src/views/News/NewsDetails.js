@@ -1,16 +1,16 @@
 import { Fragment } from "react";
 
 import Header from "../../components/Header/Header";
-import DetailsNews from "../../components/Details/DetailsNews/DetailsNews"
+import ViewNews from "../../components/View/ViewNews/ViewNews"
 import Footer from "../../components/Footer/Footer";
 
-const SingleNews = () => {
+const DetailsNews = () => {
     return (
         <Fragment>
             <Header />
             <main className="main">
                 <div className="container">
-                    <DetailsNews />
+                    <ViewNews />
                 </div>
             </main>
             <Footer />
@@ -18,4 +18,4 @@ const SingleNews = () => {
     )
 }
 
-export default SingleNews;
+export default DetailsNews;

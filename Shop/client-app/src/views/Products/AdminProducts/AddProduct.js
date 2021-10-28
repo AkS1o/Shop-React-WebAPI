@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Component } from "react";
 import { Redirect } from "react-router-dom";
-import APIService from "../../services/APIService";
-import { v4 as uuidv4 } from 'uuid';
 
-import { addGame } from "../../actions/GameListAction";
+import APIService from "../../../services/APIService";
+import { addGame } from "../../../actions/GameListAction";
 
 import React from 'react';
 import { EditorState } from 'draft-js';

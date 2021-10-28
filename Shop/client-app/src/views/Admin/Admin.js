@@ -1,11 +1,13 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import SitebarAdmin from "../../components/Sitebar/SitebarAdmin/SitebarAdmin"
-import MainProduct from "../../components/Product/MainProducts"
-import ViewsProduct from "../../components/Product/ViewsProduct"
-import AddProduct from "../../components/Product/AddProduct"
-import EditProduct from "../../components/Product/EditProduct"
-import DeleteProduct from "../../components/Product/DeleteProduct"
+
+import ViewsProduct from "../../components/View/ViewProduct/ViewProduct"
+import MainProduct from "../Products/AdminProducts/MainProducts"
+import AddProduct from "../Products/AdminProducts/AddProduct"
+import EditProduct from "../Products/AdminProducts/EditProduct"
+import DeleteProduct from "../Products/AdminProducts/DeleteProduct"
+
 import MainGenres from "../Genre/MainGenres"
 import AddGenre from "../Genre/AddGenre"
 

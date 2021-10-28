@@ -1,16 +1,16 @@
 import { Fragment } from "react";
 
 import Header from "../../components/Header/Header";
-import DetailsProduct from "../../components/Details/DetailsProduct/DetailsProduct"
+import ViewProduct from "../../components/View/ViewProduct/ViewProduct"
 import Footer from "../../components/Footer/Footer";
 
-const Product = () => {
+const DetalisProduct = () => {
     return (
         <Fragment>
             <Header />
             <main className="main">
                 <div className="container">
-                    <DetailsProduct />
+                    <ViewProduct />
                 </div>
             </main>
             <Footer />
@@ -18,4 +18,4 @@ const Product = () => {
     )
 }
 
-export default Product;
+export default DetalisProduct;
