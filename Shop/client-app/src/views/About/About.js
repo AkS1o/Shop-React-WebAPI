@@ -4,13 +4,14 @@ import { Fragment } from "react";
 // Import components
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import AboutUs from "../../components/AboutUs/AboutUs";
 
 const About = () => {
     return(
         <Fragment>
             <Header />
             <main className="main">
-                <div>About</div>
+                <AboutUs />
             </main>
             <Footer />
         </Fragment>
