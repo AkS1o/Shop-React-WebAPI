@@ -1,34 +1,73 @@
 .notFound {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    z-index: 110;
-    .text-wrap{
+    height: 100vh;
+    margin-top: -70px;
+    .img-wrap{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 800px;
+        margin-top: -265px;
+        margin-left: -400px;
+        z-index: -1;
+    }
+    .content-text-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+    }
+
+    .text-wrap{ 
         overflow: hidden;
+        flex: 1;
+        opacity: 0;
+        pointer-events: none;
+        &.active{ opacity: 1; }
     }
-    .full {
-        flex: none;
-    }
-    h1{
-        color: transparent;
-        font-size: 17vh;
-        line-height: 0.8;
+
+    .full { flex: none; }
+   
+    .text {
+        display: block;
         color: $colorPrimary;
+        font-family: $fontSecondary;
+        font-size: 20vh;
+        font-weight: 900;
+        line-height: 16vh;
+        text-transform: uppercase;
+        pointer-events: none;
     }
-    h1.stroke {
-        color: transparent;
-        -webkit-text-stroke-width: 1.5px;
-	    -webkit-text-stroke-color: $colorSecondary;
+
+    .text.stroke {
+        color: #141414;
+        text-transform: capitalize;
+        background: linear-gradient(100deg, red 0, #f05e06 100%);
+        -webkit-background-clip: text;
+        -webkit-text-stroke: 5px transparent;
     }
-    .top{
-        transform: translate3d(0,20%,0);
+
+    .bottom { transform: translate3d(0,-50%,0); }
+  
+    .main-text {
+         position: relative;
+         overflow: visible;
     }
-    .bottom{
-        transform: translate3d(0,-40%,0);
+
+    #main-subtext {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 700px;
+        margin-left: -350px;
+        opacity: 0;
+        transition: ease 2s;
+        &.active { opacity: 1; }
+        p{
+            color: #fff;
+            font-size: 5rem;
+            font-weight: 600;
+            text-shadow: 4px 4px $colorSecondary;
+        }
     }
 }
