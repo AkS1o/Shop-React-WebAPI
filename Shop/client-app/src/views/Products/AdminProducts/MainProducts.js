@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux"
 import { useEffect } from "react";
 
-import { getAllGames } from "../../actions/GameListAction"
+import { getAllGames } from "../../../actions/GameListAction"
 
-import apiService from "../../services/APIService";
+import apiService from "../../../services/APIService";
 
-import Pagination from "../Pagination/Pagination";
-
-import TableProducts from "../Table/TableProducts/TableProducts";
+import Pagination from "../../../components/Pagination/Pagination";
+import TableProducts from "../../../components/Table/TableProducts/TableProducts";
 
 
 const MainProduct = ({ GameList, getAllGames }) => {
