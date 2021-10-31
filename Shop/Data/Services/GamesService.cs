@@ -242,6 +242,7 @@ namespace Shop.Data.Services
             foreach (var item in gamesList)
             {
                 var gameVM = new GameVM();
+                gameVM.Id_Game = item.Id;
                 gameVM.Name = item.Name;
                 gameVM.Price = item.Price;
                 gameVM.Description = item.Description;
