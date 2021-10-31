@@ -22,6 +22,22 @@ class APIService extends Component {
         return List;
     }
 
+    async fetchGame_vm_List() {
+        console.log("apiGames", this.apiGames + "get-gamesVM")
+        const List = await fetch(this.apiGames + "get-gamesVM")
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                if (data === null)
+                    return { List: [] }
+                else
+                    return { List: data };
+            })
+            .catch(error => console.log(error));
+        return List;
+    }
+
     async addGame(Game) {
         await fetch(`${this.apiGames}add-game`,
             {

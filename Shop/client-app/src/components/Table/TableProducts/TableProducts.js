@@ -35,7 +35,7 @@ const TableProducts = ({ Id, Ganre, Name, Quantity, Price, ReleaseDate, GameList
                 <td>{Quantity}</td>
                 <td>Active</td>
                 <td className="table-action">
-                    <Link to="/admin/views-product">
+                    <Link to="/admin/views-product" onClick={onGetCurrentGame}>
                         <FontAwesomeIcon icon={faEye} />
                     </Link>
                     <Link onClick={onGetCurrentGame} to="/admin/edit-product">
