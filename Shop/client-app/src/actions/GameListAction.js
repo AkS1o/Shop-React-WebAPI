@@ -5,6 +5,13 @@ export const getAllGames = (gameList) => {
     }
 }
 
+export const getAllGamesVM = (gameList_vm) => {
+    return {
+        type: "GAMES_LOADED_VM",
+        payload: gameList_vm
+    }
+}
+
 export const addGame = (gameList) => {
     return {
         type: "GAME_ADD",

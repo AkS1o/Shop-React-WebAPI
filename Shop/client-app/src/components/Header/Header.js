@@ -14,7 +14,7 @@ const Header = () => {
             dropdownMenu.style.display = 'none';
         }
     })
-     
+    
     const dropdown = () => {
         let dropdownMenu = document.getElementById('dropdown-menu');
 	    dropdownMenu.style.display = 'block';

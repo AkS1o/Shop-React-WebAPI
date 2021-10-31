@@ -35,7 +35,7 @@ const TableNews = ({ Id, Name, Publisher, ShortDescription, Image, ReleaseDate, 
                 <td>{ReleaseDate}</td>
                 <td>Active</td>
                 <td className="table-action">
-                    <Link to="/admin/views-news">
+                    <Link to="/admin/views-news" onClick={onGetCurrentNews}>
                         <FontAwesomeIcon icon={faEye} />
                     </Link>
                     <Link onClick={onGetCurrentNews} to="/admin/edit-news">
