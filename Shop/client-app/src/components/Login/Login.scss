@@ -2,4 +2,49 @@
     align-items: center;
     display: flex;
     min-height: 100vh;
+
+    .img-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 1s;
+        }
+        &::after {
+            background-color: #000000;
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 0.3;
+            border-radius: 10px;
+        }
+    }
+
+    .card {
+        background-color: rgba($color: $cardBg, $alpha: .95);
+        position: absolute;
+        width: 30%;
+        top: 50%;
+        left: 50%;
+        margin-top: -300px;
+        margin-left: calc(-30% / 2);
+        padding: 2rem 1.25rem;
+    }
+    
+    .card-header {
+        text-align: center;
+    }
+
+    .card-footer{
+        text-align: center;
+        a { color: $colorSecondary; }
+    }
 }
