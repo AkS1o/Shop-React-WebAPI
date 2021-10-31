@@ -48,11 +48,38 @@ namespace Shop.Controllers
         }
 
         [HttpPut("update-game")]
-        public IActionResult СhangeGame([FromBody] GameVM game,int id)
+        public IActionResult СhangeGame([FromBody] GameVM game)
         {
-            var updatedContact = _gamesService.СhangeGame(game, id);
+            var updatedContact = _gamesService.СhangeGame(game);
             return Ok(updatedContact);
         }
+
+        [HttpGet("get-games-pagination")]
+        public IActionResult GetGamesPaginations(int pageNumber)
+        {
+            var gamesPaginations = _gamesService.GetGamesPaginations(pageNumber);
+            return Ok(gamesPaginations);
+        }
+        [HttpGet("get-games-by-genre")]
+        public IActionResult GetGamesbyGenre(int genreId)
+        {
+            var gamesgenre = _gamesService.GetGamesbyGenre(genreId);
+            return Ok(gamesgenre);
+        }
+        [HttpGet("get-games-by-platform")]
+        public IActionResult GetGamesbyPlatform(int platformId)
+        {
+            var gamesplatform = _gamesService.GetGamesbyPlatform(platformId);
+            return Ok(gamesplatform);
+        }
+
+        [HttpGet("get-gamesVM")]
+        public IActionResult GetGamesVM()
+        {
+            var gamse = _gamesService.GetGamesVM();
+            return Ok(gamse);
+        }
+
 
 
     }
