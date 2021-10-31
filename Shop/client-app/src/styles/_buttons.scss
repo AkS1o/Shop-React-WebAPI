@@ -11,6 +11,18 @@
 	padding: 0.55rem 1.25rem;
 	text-decoration: none;
 	cursor: pointer;
+	transition: all .3s;
+	&:hover {
+		transition: all .3s;
+	}
+}
+
+.btn-link{
+	color: $colorPrimary;
+	svg {margin-right: .5rem;}
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .btn-primary{

@@ -1,5 +1,6 @@
 @import "./styles/color";
 @import "./styles/buttons";
+@import "./styles//form";
 @import "./styles/fonts";
 @import "./styles/card";
 @import "./styles/general";
@@ -8,6 +9,15 @@
 
 @import "./components/Header/Header.scss";
 @import "./components/Footer/Footer.scss";
+
+
+@import "./components/Slider/Slider.scss";
+@import "./components/Banner/Banner.scss";
+@import "./components/Pagination/Pagination.scss";
+
+@import "./components/AboutUs/AboutUs.scss";
+@import "./components/ContactUs/ContactUs.scss";
+@import "./components/NotFound/NotFound.scss";
 
 @import "./components/Login/Login.scss";
 @import "./components/Register/Register.scss";
@@ -21,13 +31,11 @@
 @import "./components/View/ViewProduct/ViewProduct.scss";
 @import "./components/View/ViewNews/ViewNews.scss";
 
-@import "./components/NotFound/NotFound.scss";
-@import "./components/Banner/Banner.scss";
-@import "./components/Pagination/Pagination.scss";
-
+@import "./components/Sitebar/SitebarUser/SitebarUser.scss";
 @import "./components/Sitebar/SitebarProducts/SitebarProducts.scss";
 @import "./components/Sitebar/SitebarAdmin/SitebarAdmin.scss";
 
-@import "./components/Slider/Slider.scss";
+@import "./components/Table/TableOrders/TableOrders.scss";
 
-
+@import './components/CashCard/CashCardVisa/CashCardVisa.scss';
+@import './components/CashCard/CashCardMastercard/CashCardMastercard.scss';
