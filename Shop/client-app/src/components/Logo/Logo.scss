@@ -17,13 +17,33 @@
     div {
         position: absolute;
         color: transparent; 
+        left: 2px;
+        font-family: "Montserrat", sans-serif;
+        margin-top: 2px;
         pointer-events: none;
         z-index: -1;
         -webkit-text-stroke-width: 1.5px;
-          -webkit-text-stroke-color: $colorSecondary;
+        -webkit-text-stroke-color: $colorSecondary;
     }
-    div:nth-child(3) { opacity: 0.7; }
-    div:nth-child(4) { opacity: 0.4; }
-    div:nth-child(6) { opacity: 0.7; }
-    div:nth-child(7) { opacity: 0.4; }
+    div:nth-child(2) { top: 100%; }
+
+    div:nth-child(3) { 
+        top: 200%;
+        opacity: 0.7;
+    }
+    div:nth-child(4) { 
+        top: 300%;
+        opacity: 0.4;
+    }
+
+    div:nth-child(5) { top: -100%; }
+
+    div:nth-child(6) { 
+        top: -200%;
+        opacity: 0.7;
+    }
+    div:nth-child(7) { 
+        top: -300%;
+        opacity: 0.4;
+    }
 }
