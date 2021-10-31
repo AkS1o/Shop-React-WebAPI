@@ -17,6 +17,7 @@ import AddPlatform from "../Platform/AddPlatform"
 import MainNews from "../News/AdminNews/MainNews"
 import AddNews from "../News/AdminNews/AddNews"
 import EditNews from "../News/AdminNews/EditNews"
+import ViewNews from "../../components/View/ViewNews/ViewNews"
 
 const Admin = () => {
     return (
@@ -40,6 +41,7 @@ const Admin = () => {
                     <Route path="/admin/news" component={MainNews} />
                     <Route path="/admin/add-news" component={AddNews} />
                     <Route path="/admin/edit-news" component={EditNews} />
+                    <Route path="/admin/views-news" component={ViewNews} />
 
 
                 </Switch>

@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { useEffect } from "react";
 
 import { getAllGames } from "../../../actions/GameListAction"
+import { getAllGamesVM } from "../../../actions/GameListAction"
 
 import apiService from "../../../services/APIService";
 
@@ -11,11 +12,19 @@ import Pagination from "../../../components/Pagination/Pagination";
 import TableProducts from "../../../components/Table/TableProducts/TableProducts";
 
 
-const MainProduct = ({ GameList, getAllGames }) => {
+const MainProduct = ({ GameList, getAllGames, GameListVm, getAllGamesVM }) => {
 
     useEffect(() => {
         apiService.fetchContactList().then(data => {
+            
             getAllGames(data.List);
+            console.log("data1", data.List)
+        });
+
+        apiService.fetchGame_vm_List().then(data => {
+           
+            getAllGamesVM(data.List);
+            console.log("data2", data.List)
         });
     }, []);
 
@@ -56,11 +65,13 @@ const MainProduct = ({ GameList, getAllGames }) => {
 
 const mapStateToProps = ({ GameListReducer }) => {
     const { GameList } = GameListReducer;
-    return { GameList }
+    const { GameListVm } = GameListReducer;
+    return { GameList, GameListVm }
 }
 
 const mapDispatchToProps = {
-    getAllGames
+    getAllGames,
+    getAllGamesVM
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainProduct);

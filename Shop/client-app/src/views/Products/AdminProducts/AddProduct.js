@@ -13,36 +13,44 @@ import { Editor } from 'react-draft-wysiwyg';
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
+
 class AddProduct extends Component {
     state = {
         editorState: EditorState.createEmpty(),
         Name: "",
         Price: 0,
-        //Quantity: "",
-        //Category: null, //sds
-        //Release_date: null,
-        //Developer: "",
-        //Publisher: "",
-        //Available: null,
-        //Platform: null, //sdf
-        //OS_rec: "",
-        //Processor_rec: "",
-        //Memory_rec: "",
-        //Storage_rec: "",
-        //Direct_X_rec: "",
-        //OS_min: "",
-        //Processor_min: "",
-        //Memory_min: "",
-        //Storage_min: "",
-        //Direct_X_min: "",
-        //isRedirect: false
-        ShortDescription: "",
-        Description: "",
-        Rating: 0,
+        Quantity: 0,
+        Developer: "",
         Publisher: "",
-        Date: "",
+        Description: "",
+        Image: "",
+        ReleaseDate: "",
+
+        Min_OS: "",
+        Min_Processor: "",
+        Min_Memory: "",
+        Min_Storage: "",
+        Min_DirectX: "",
+        Min_Graphics: "",
+
+        Rec_OS: "",
+        Rec_Processor: "",
+        Rec_Memory: "",
+        Rec_Storage: "",
+        Rec_DirectX: "",
+        Rec_Graphics: "",
+
+
+        GenreIds: [],
+        PlatformIds: [],
         isRedirect: false
     }
+
+    //componentDidMount() {
+    //    apiService.fetchNewsList().then(data => {
+    //        getAllGenres(data.List);
+    //    });
+    //}
 
     onGetName = (e) => {
         const name = e.target.value;
@@ -58,10 +66,24 @@ class AddProduct extends Component {
         })
     }
 
-    onGetShortDescription = (e) => {
-        const shortDescription = e.target.value;
+    onGetQuantity = (e) => {
+        const quantity = e.target.value;
         this.setState({
-            ShortDescription: shortDescription
+            Quantity: quantity
+        })
+    }
+
+    onGetDeveloper = (e) => {
+        const developer = e.target.value;
+        this.setState({
+            Developer: developer
+        })
+    }
+
+    onGetPublisher = (e) => {
+        const publisher = e.target.value;
+        this.setState({
+            Publisher: publisher
         })
     }
 
@@ -72,130 +94,166 @@ class AddProduct extends Component {
         })
     }
 
-    onGetRating = (e) => {
-        const rating = e.target.value;
+    onGetImage = (e) => {
+        const image = e.target.value;
         this.setState({
-            Rating: rating
+            Image: image
         })
     }
 
-    //onGetQuantity = (e) => {
-    //    const quantity = e.target.value;
-    //    this.setState({
-    //        Quantity: quantity
-    //    })
-    //}
-
-    onGetRelease_date = (e) => {
-        const release_date = e.target.value;
+    onGetReleaseDate = (e) => {
+        const releaseDate = e.target.value;
         this.setState({
-            Date: release_date //dsadsa
+            ReleaseDate: releaseDate
         })
     }
 
-    //onGetDeveloper = (e) => {
-    //    const developer = e.target.value;
-    //    this.setState({
-    //        Developer: developer
-    //    })
-    //}
-
-    onGetPublisher = (e) => {
-        const publisher = e.target.value;
+    onGetMin_OS = (e) => {
+        const min_OS = e.target.value;
         this.setState({
-            Publisher: publisher
+            Min_OS: min_OS
         })
     }
 
-    //onGetAvailable = (e) => {
-    //    const available = e.target.value;
-    //    this.setState({
-    //        Available: available
-    //    })
-    //}
+    onGetMin_Processor = (e) => {
+        const min_Processor = e.target.value;
+        this.setState({
+            Min_Processor: min_Processor
+        })
+    }
 
-    //onGetOS_rec = (e) => {
-    //    const oS_rec = e.target.value;
-    //    this.setState({
-    //        OS_rec: oS_rec
-    //    })
-    //}
+    onGetMin_Memory = (e) => {
+        const min_Memory = e.target.value;
+        this.setState({
+            Min_Memory: min_Memory
+        })
+    }
 
-    //onGetProcessor_rec = (e) => {
-    //    const processor_rec = e.target.value;
-    //    this.setState({
-    //        Processor_rec: processor_rec
-    //    })
-    //}
+    onGetMin_Storage = (e) => {
+        const min_Storage = e.target.value;
+        this.setState({
+            Min_Storage: min_Storage
+        })
+    }
 
-    //onGetMemory_rec = (e) => {
-    //    const memory_rec = e.target.value;
-    //    this.setState({
-    //        Memory_rec: memory_rec
-    //    })
-    //}
+    onGetMin_DirectX = (e) => {
+        const min_DirectX = e.target.value;
+        this.setState({
+            Min_DirectX: min_DirectX
+        })
+    }
 
-    //onGetStorage_rec = (e) => {
-    //    const storage_rec = e.target.value;
-    //    this.setState({
-    //        Storage_rec: storage_rec
-    //    })
-    //}
+    onGetMin_Graphics = (e) => {
+        const min_Graphics = e.target.value;
+        this.setState({
+            Min_Graphics: min_Graphics
+        })
+    }
 
-    //onGetDirect_X_rec = (e) => {
-    //    const direct_X_rec = e.target.value;
-    //    this.setState({
-    //        Direct_X_rec: direct_X_rec
-    //    })
-    //}
+    onGetRec_OS = (e) => {
+        const rec_OS = e.target.value;
+        this.setState({
+            Rec_OS: rec_OS
+        })
+    }
 
-    //onGetOS_min = (e) => {
-    //    const oS_min = e.target.value;
-    //    this.setState({
-    //        OS_min: oS_min
-    //    })
-    //}
+    onGetRec_Processor = (e) => {
+        const rec_Processor = e.target.value;
+        this.setState({
+            Rec_Processor: rec_Processor
+        })
+    }
 
-    //onGetProcessor_min = (e) => {
-    //    const processor_min = e.target.value;
-    //    this.setState({
-    //        Processor_min: processor_min
-    //    })
-    //}
+    onGetRec_Memory = (e) => {
+        const rec_Memory = e.target.value;
+        this.setState({
+            Rec_Memory: rec_Memory
+        })
+    }
 
-    //onGetMemory_min = (e) => {
-    //    const memory_min = e.target.value;
-    //    this.setState({
-    //        Memory_min: memory_min
-    //    })
-    //}
+    onGetRec_Storage = (e) => {
+        const rec_Storage = e.target.value;
+        this.setState({
+            Rec_Storage: rec_Storage
+        })
+    }
 
-    //onGetStorage_min = (e) => {
-    //    const storage_min = e.target.value;
-    //    this.setState({
-    //        Storage_min: storage_min
-    //    })
-    //}
+    onGetRec_DirectX = (e) => {
+        const rec_DirectX = e.target.value;
+        this.setState({
+            Rec_DirectX: rec_DirectX
+        })
+    }
 
-    //onGetDirect_X_min = (e) => {
-    //    const direct_X_min = e.target.value;
-    //    this.setState({
-    //        Direct_X_min: direct_X_min
-    //    })
-    //}
+    onGetRec_Graphics = (e) => {
+        const rec_Graphics = e.target.value;
+        this.setState({
+            Rec_Graphics: rec_Graphics
+        })
+    }
+
+    onGetGenreIds = (e) => {
+        const prev_genreIds = new Array();
+        prev_genreIds.push(e.target.value);
+        const genreIds = new Array();
+        this.props.GenreList.forEach(item => {
+            prev_genreIds.forEach(item2 => {
+                if (item.Name == item2) {
+                    genreIds.push(item.Id);
+                }
+            })
+        })
+        this.setState({
+            GenreIds: genreIds
+        })
+    }
+
+    onGetPlatformIds = (e) => {
+        const prev_platformIds = new Array();
+        prev_platformIds.push(e.target.value);
+        const platformIds = new Array();
+        this.props.PlatformList.forEach(item => {
+            prev_platformIds.forEach(item2 => {
+                if (item.Name == item2) {
+                    platformIds.push(item.Id);
+                }
+            })
+        })
+        this.setState({
+            PlatformIds: platformIds
+        })
+    }
 
     CreateGame = (e) => {
         e.preventDefault();
-        const {/*Id,*/ Name, Price, ShortDescription, Description, Rating, Publisher, Date } = this.state;
+        const { Name, Quantity, Developer, Price, Description, Rating, Publisher, Image, ReleaseDate, Min_OS, Min_Processor,
+            Min_Memory, Min_Storage, Min_DirectX, Min_Graphics, Rec_OS, Rec_Processor, Rec_Memory, Rec_Storage, Rec_DirectX, Rec_Graphics,
+            GenreIds, PlatformIds } = this.state;
         const newGame = {
             /*Id: uuid(),*/
             Name,
-            ShortDescription,
+            Quantity,
+            Developer,
+            Price,
             Description,
             Publisher,
-            Price,
-            Rating,
-            Date
+            Image,
+            ReleaseDate,
+            Min_OS,
+            Min_Processor,
+            Min_Memory,
+            Min_Storage,
+            Min_DirectX,
+            Min_Graphics,
+            Rec_OS,
+            Rec_Processor,
+            Rec_Memory,
+            Rec_Storage,
+            Rec_DirectX,
+            Rec_Graphics,
+            GenreIds,
+            PlatformIds,
+
         }
         let tmplist = this.props.GameList.slice();
         tmplist.push(newGame);
@@ -213,6 +271,30 @@ class AddProduct extends Component {
         });
     };
 
+    componentDidMount (){
+        let genreSelect = document.getElementById("GenreSelect");
+        let tmplist = this.props.GenreList.slice();
+        if (tmplist != null) {
+            tmplist.forEech((item) => {
+                let opt = document.createElement("option");
+                opt.setAttribute("value", item.Name)
+                opt.innerHTML = item.Name;
+                genreSelect.appendChild(opt);
+            })
+        }
+
+        let platformSelect = document.getElementById("platformSelect");
+        let tmplist2 = this.props.PlatformList.slice();
+        if (tmplist2 != null) {
+            tmplist2.forEach((item) => {
+                let opt = document.createElement("option");
+                opt.setAttribute("value", item.Name)
+                opt.innerHTML = item.Name;
+                platformSelect.appendChild(opt);
+            })
+        }
+    }
+
     render() {
         let { isRedirect } = this.state;
         if (isRedirect === true) {
@@ -227,7 +309,7 @@ class AddProduct extends Component {
                                 <div className="card-body">
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input type="file" name="files" id="upload" multiple />
+                                        <input type="file" name="files" id="upload" multiple onChange={this.onGetImage} />
                                     </div>
                                     <img src="../img/battlefield-2042.jpg" alt="img" className="img-fluid" />
                                 </div>
@@ -253,8 +335,8 @@ class AddProduct extends Component {
                                                 {/*    <input type="number" />*/}
                                                 {/*</div>*/}
                                                 <div class="col-6 form-group">
-                                                    <label>Rating</label>
-                                                    <input type="number" onChange={this.onGetRating} />
+                                                    <label>Quantity</label>
+                                                    <input type="number" onChange={this.onGetQuantity} />
                                                 </div>
                                             </div>
                                             {/*<div class="form-group">*/}
@@ -263,11 +345,11 @@ class AddProduct extends Component {
                                             {/*</div>*/}
                                             <div class="form-group">
                                                 <label>Release date</label>
-                                                <input type="date" onChange={this.onGetRelease_date} />
+                                                <input type="date" onChange={this.onGetReleaseDate} />
                                             </div>
                                             <div class="form-group">
-                                                <label>Short Sescription</label>
-                                                <input type="text" onChange={this.onGetShortDescription} />
+                                                <label>Description</label>
+                                                <input type="text" onChange={this.onGetDescription} />
                                             </div>
                                         </div>
                                         <div className="col-6">
@@ -276,20 +358,32 @@ class AddProduct extends Component {
                                             {/*    <input type="text" />*/}
                                             {/*</div>*/}
                                             <div class="form-group">
-                                                <label>Description</label>
-                                                <input type="text" onChange={this.onGetDescription} />
+                                                <label>Developer</label>
+                                                <input type="text" onChange={this.onGetDeveloper} />
                                             </div>
                                             <div class="form-group">
                                                 <label>Publisher</label>
                                                 <input type="text" onChange={this.onGetPublisher} />
                                             </div>
                                             <div class="form-group">
-                                                <label>Available</label>
-                                                <input type="text" />
+                                                <label>Genres</label>
+                                                <select id="GenreSelect" className="custom-select" onChange={this.onGetGenreIds}>
+                                                  <option defaultValue>Choose...</option>
+                                                    {/*<option value="Work">Work</option>*/}
+                                                    {/*<option value="Family">Family</option>*/}
+                                                    {/*<option value="Private">Private</option>*/}
+                                                    {/*<option value="Friend">Friend</option>*/}
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Platform</label>
-                                                <input type="text" />
+                                                <select id="platformSelect" className="custom-select" onChange={this.onGetPlatformIds}>
+                                                    <option defaultValue>Choose...</option>
+                                                    {/*<option value="Work">Work</option>*/}
+                                                    {/*<option value="Family">Family</option>*/}
+                                                    {/*<option value="Private">Private</option>*/}
+                                                    {/*<option value="Friend">Friend</option>*/}
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -323,54 +417,54 @@ class AddProduct extends Component {
                                             <h5>Minimum</h5>
                                             <div class="form-group">
                                                 <label>OS</label>
-                                                <input type="text" />
+                                                <input type="text" onChange={this.onGetMin_OS} />
                                             </div>
                                             <div class="form-group">
                                                 <label>Processor</label>
-                                                <input type="text" />
+                                                <input type="text" onChange={this.onGetMin_Processor} />
                                             </div>
                                             <div class="form-group">
                                                 <label>Memory</label>
-                                                <input type="text" />
+                                                <input type="text" onChange={this.onGetMin_Memory} />
                                             </div>
                                             <div class="form-group">
                                                 <label>Storage</label>
-                                                <input type="text" />
+                                                <input type="text" onChange={this.onGetMin_Storage} />
                                             </div>
                                             <div class="form-group">
                                                 <label>Direct X</label>
-                                                <input type="text" />
+                                                <input type="text" onChange={this.onGetMin_DirectX} />
                                             </div>
                                             <div class="form-group">
                                                 <label>Graphics</label>
-                                                <input type="text" />
+                                                <input type="text" onChange={this.onGetMin_Graphics} />
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <h5>Recommended</h5>
                                             <div class="form-group">
                                                 <label>OS</label>
-                                                <input type="text" />
+                                                <input type="text" onChange={this.onGetRec_OS} />
                                             </div>
                                             <div class="form-group">
                                                 <label>Processor</label>
-                                                <input type="text" />
+                                                <input type="text" onChange={this.onGetRec_Processor} />
                                             </div>
                                             <div class="form-group">
                                                 <label>Memory</label>
-                                                <input type="text" />
+                                                <input type="text" onChange={this.onGetRec_Memory} />
                                             </div>
                                             <div class="form-group">
                                                 <label>Storage</label>
-                                                <input type="text" />
+                                                <input type="text" onChange={this.onGetRec_Storage} />
                                             </div>
                                             <div class="form-group">
                                                 <label>Direct X</label>
-                                                <input type="text" />
+                                                <input type="text" onChange={this.onGetRec_DirectX} />
                                             </div>
                                             <div class="form-group">
                                                 <label>Graphics</label>
-                                                <input type="text" />
+                                                <input type="text" onChange={this.onGetRec_Graphics} />
                                             </div>
                                         </div>
                                     </div>
@@ -388,9 +482,11 @@ class AddProduct extends Component {
     }
 }
 
-const mapStateToProps = ({ GameListReducer }) => {
+const mapStateToProps = ({ GenreListReducer, GameListReducer, PlatformListReducer }) => {
+    const { GenreList } = GenreListReducer;
     const { GameList } = GameListReducer;
-    return { GameList }
+    const { PlatformList } = PlatformListReducer;
+    return { GenreList, GameList, PlatformList }
 }
 
 const mapDispatchToProps = {

@@ -2,8 +2,14 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux"
+import { getCurrentNews } from "../../../actions/NewsListAction"
 
-const CardNews = ({Id, Name, Publisher, ShortDescription, Image, ReleaseDate }) => {
+const CardNews = ({ Id, Name, Publisher, ShortDescription, Image, ReleaseDate, NewsList, getCurrentNews }) => {
+    let onGetCurrentNews = () => {
+        const index = NewsList.findIndex(elem => elem.Id === Id);
+        const newss = NewsList[index];
+        getCurrentNews(newss)
+    }
     return (
         <Fragment>
             <div className="col-4">
@@ -18,7 +24,7 @@ const CardNews = ({Id, Name, Publisher, ShortDescription, Image, ReleaseDate }) 
                             <Link to="#">{ Name }</Link>
                         </h4>
                         <div className="text">{ ShortDescription }</div>
-                        <Link to="#">read more</Link>
+                        <Link to="/newsId" onClick={onGetCurrentNews}>read more</Link>
                     </div>
                 </div>
             </div>
@@ -32,6 +38,7 @@ const mapStateToProps = ({ NewsListReducer }) => {
 }
 
 const mapDispatchToProps = {
+    getCurrentNews
 }
 
 

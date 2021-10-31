@@ -1,5 +1,6 @@
 const initialState = {
     GameList: [],
+    GameListVM: [],
     CurrentGame: null
 }
 
@@ -9,6 +10,11 @@ const GameListReducer = (state = initialState, action) => {
             return {
                 ...state,
                 GameList: action.payload
+            }
+        case "GAMES_LOADED_VM":
+            return {
+                ...state,
+                GameListVM: action.payload
             }
         case "GAME_ADD":
             return {

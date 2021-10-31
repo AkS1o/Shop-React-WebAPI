@@ -4,12 +4,18 @@ import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { getCurrentGame } from "../../../actions/GameListAction"
 
-const CardProducts = ({ Id, Developer, Name, Quantity, Price }) => {
+const CardProducts = ({ Id, Developer, Name, Quantity, Price, GameList, getCurrentGame}) => {
+    let onGetCurrentGame = () => {
+        const index = GameList.findIndex(elem => elem.Id === Id);
+        const game = GameList[index];
+        getCurrentGame(game)
+    }
     return (
         <Fragment>
             <div className="col-3">
-                <Link to="#" className="card card-products">
+                <Link to="/productsId" className="card card-products" onClick={onGetCurrentGame}>
                     <div className="image-wrap">
                         <img src="../img/bf2048.png" alt="img" className="img-fluid" />
                     </div>
@@ -36,7 +42,7 @@ const mapStateToProps = ({ GameListReducer }) => {
 }
 
 const mapDispatchToProps = {
+    getCurrentGame
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardProducts);
