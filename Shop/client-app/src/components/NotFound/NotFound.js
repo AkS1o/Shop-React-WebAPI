@@ -18,23 +18,23 @@ export default class NotFound extends Component {
         var itemActive = itemMidle;
 
         for (let i = itemActive + 1; i < countItem; i++) {
-            await this.sleep(140).then(() => {
+            await this.sleep(180).then(() => {
                 notFound.children[i].classList.add("active");
             })
         }
         for (let i = itemActive; i < countItem; i++) {
-            await this.sleep(70).then(() => {
+            await this.sleep(160).then(() => {
                 notFound.children[i].classList.remove("active");
             })
         }
 
         for (let i = 0; i < itemMidle + 1; i++) {
-            await this.sleep(140).then(() => {
+            await this.sleep(180).then(() => {
                 notFound.children[i].classList.add("active");
             })
         }
         for (let i = 0; i < itemMidle; i++) {
-            await this.sleep(70).then(() => {
+            await this.sleep(160).then(() => {
                 notFound.children[i].classList.remove("active");
             })
         }
