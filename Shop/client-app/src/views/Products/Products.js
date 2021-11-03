@@ -7,6 +7,8 @@ import Footer from "../../components/Footer/Footer";
 import GridProducts from "../../components/Grid/GridProducts/GridProducts";
 import SitebarProducts from "../../components/Sitebar/SitebarProducts/SitebarProducts";
 
+import SideBarSearch from "../../components/Sitebar/SitebarSearch/SideBarSearch"
+
 const Products = () => {
     return (
         <Fragment>
@@ -18,25 +20,12 @@ const Products = () => {
                             <SitebarProducts />
                         </aside>
                         <section className="col-9">
-                            <div className="row align-items-center">
-                                <div className="col-8">12 results found</div>
+                            <div className="row justify-content-between align-items-center">
+                                <div className="col-4">12 results found</div>
                                 <div className="col-4">
-                                    <div className="form-select">
-                                        <div className="row align-items-center">
-                                            <div className="col-3">
-                                                <label> Sort by</label>
-                                            </div>
-                                            <div className="col-9">
-                                                <select>
-                                                    <option value="popularity">popularity</option>
-                                                    <option value="novelty">novelty</option>
-                                                    <option value="action">action</option>
-                                                    <option value="rank">rank</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <SideBarSearch />
                                 </div>
+                                
                             </div>
                             <GridProducts />
                         </section>

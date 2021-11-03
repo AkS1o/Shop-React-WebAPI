@@ -275,7 +275,7 @@ class AddProduct extends Component {
         let genreSelect = document.getElementById("GenreSelect");
         let tmplist = this.props.GenreList.slice();
         if (tmplist != null) {
-            tmplist.forEech((item) => {
+            tmplist.forEach((item) => {
                 let opt = document.createElement("option");
                 opt.setAttribute("value", item.Name)
                 opt.innerHTML = item.Name;

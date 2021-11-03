@@ -7,7 +7,7 @@ import { Redirect } from "react-router-dom";
 
 class DetailsProduct extends Component {
     state = {
-        Id: this.props.CurrentGame.Id,//
+        Id: this.props.CurrentGame.Id_Game,//
         Name: this.props.CurrentGame.Name,//
         Quantity: this.props.CurrentGame.Quantity,//
         Developer: this.props.CurrentGame.Developer,//

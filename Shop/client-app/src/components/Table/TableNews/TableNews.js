@@ -41,7 +41,7 @@ const TableNews = ({ Id, Name, Publisher, ShortDescription, Image, ReleaseDate, 
                     <Link onClick={onGetCurrentNews} to="/admin/edit-news">
                         <FontAwesomeIcon icon={faEdit} />
                     </Link>
-                    <Link onClick={onDeleteNews} to="/admin/">
+                    <Link onClick={onDeleteNews} to="/admin/news">
                         <FontAwesomeIcon icon={faTrash} />
                     </Link>
                     <FontAwesomeIcon icon={faImages} />

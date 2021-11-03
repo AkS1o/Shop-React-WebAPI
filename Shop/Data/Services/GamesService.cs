@@ -58,7 +58,7 @@ namespace Shop.Data.Services
                 _context.GameGenres.Add(_game_genre);
 
             }
-
+            _context.SaveChanges();
             foreach (var id in game.PlatformIds)
             {
                 var _game_platform = new GamePlatform()
@@ -67,9 +67,9 @@ namespace Shop.Data.Services
                     PlatformId = id
                 };
                 _context.GamePlatforms.Add(_game_platform);
-
+               
             }
-
+            _context.SaveChanges();
         }
 
         public void DeleteGame(int id)
@@ -170,17 +170,17 @@ namespace Shop.Data.Services
 
             gamePaginationVM.CountGames = games.Count();
 
-            decimal count = gamePaginationVM.CountGames / 2;
+            decimal count = gamePaginationVM.CountGames / 8;
             gamePaginationVM.PageAll = Convert.ToInt32(Math.Ceiling(count));
             gamePaginationVM.PageActive = pageNumber + 1;
 
             if (pageNumber == 0)
             {
-                gamePaginationVM.Games = games.Take(2).ToList();
+                gamePaginationVM.Games = games.Take(8).ToList();
             }
             else
             {
-                gamePaginationVM.Games = games.Skip(2 * pageNumber).Take(2).ToList();
+                gamePaginationVM.Games = games.Skip(8 * pageNumber).Take(8).ToList();
             }
 
             return gamePaginationVM;

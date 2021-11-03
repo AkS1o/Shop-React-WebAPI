@@ -1,0 +1,16 @@
+.contacts-search{
+    margin-right: 20px;
+}
+
+.contacts-search + .input-group-addon {
+    background: #fff;
+    border-radius: 0;
+}
+
+.input-group-addon:last-child {
+    border-left: 0;
+}
+
+.contacts-search + .input-group-addon button {
+    background: transparent;
+}

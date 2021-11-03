@@ -32,7 +32,7 @@ const TableGenres = ({ Id, Name, GenreList, deleteGenre, getCurrentGenre }) => {
                 <td>{Name}</td>
                 <td>Active</td>
                 <td className="table-action">
-                    <Link onClick={onDeleteGenre} to="/admin/">
+                    <Link onClick={onDeleteGenre} to="/admin/genres">
                         <FontAwesomeIcon icon={faTrash} />
                     </Link>
                     <FontAwesomeIcon icon={faImages} />

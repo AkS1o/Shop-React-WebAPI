@@ -18,6 +18,10 @@ import MainNews from "../News/AdminNews/MainNews"
 import AddNews from "../News/AdminNews/AddNews"
 import EditNews from "../News/AdminNews/EditNews"
 
+import SideBarSearch from "../../components/Sitebar/SitebarSearch/SideBarSearch"
+
+/*import SitebarAdmin from "../../components/Sitebar/SitebarAdmin"*/
+
 const Admin = () => {
     return (
         <main className="container-fluid body-wrap">
@@ -39,6 +43,10 @@ const Admin = () => {
                     <Route path="/admin/news" component={MainNews} />
                     <Route path="/admin/add-news" component={AddNews} />
                     <Route path="/admin/edit-news" component={EditNews} />
+
+                    <Route path="/admin/sitebarAdmin" component={SitebarAdmin} />
+                    <Route path="/admin/sitebarSearch" component={SideBarSearch} />
+
                 </Switch>
             </section>
         </main>

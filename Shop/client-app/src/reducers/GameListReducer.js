@@ -1,6 +1,9 @@
 const initialState = {
     GameList: [],
     GameListVM: [],
+    SearchString: "",
+    SearchGenre: "",
+    SearchPlatform: "",
     CurrentGame: null
 }
 
@@ -34,7 +37,22 @@ const GameListReducer = (state = initialState, action) => {
         case "GAME_UPDATE":
             return {
                 ...state,
-                ContactList: action.payload
+                GameList: action.payload
+            }
+        case "SEARCH_STRING_UPDATE":
+            return {
+                ...state,
+                SearchString: action.payload
+            }
+        case "SEARCH_GENRE_UPDATE":
+            return {
+                ...state,
+                SearchGenre: action.payload
+            }
+        case "SEARCH_PLATFORM_UPDATE":
+            return {
+                ...state,
+                SearchPlatform: action.payload
             }
         default:
             return state;
