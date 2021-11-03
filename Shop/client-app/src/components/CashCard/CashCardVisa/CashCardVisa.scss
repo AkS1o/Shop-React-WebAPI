@@ -1,3 +1,25 @@
 .cc-visa{
-    background-color: blue;
+    background: linear-gradient(145deg, #4684c1, #343174);
+
+    .cc-number{
+        font-size: 26px;
+        font-weight: 300;
+        padding: 3rem 0 1rem;
+    }
+
+    .cc-expiry-date{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+        span {
+            font-size: 10px;
+            font-weight: 600;
+            line-height: 10px;
+            text-transform: uppercase;
+        }
+        p{ font-size: 20px; }
+    }
+    
+    svg { font-size: 36px; }
 }

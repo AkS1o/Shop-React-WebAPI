@@ -52,7 +52,7 @@ const Header = () => {
                             </div>
                             <ul id="dropdown-menu" className="dropdown-menu">
                                 <li>
-                                    <Link to="/user/profile">
+                                    <Link to="user/personal">
                                         <FontAwesomeIcon icon={faUser} />
                                         Profile
                                     </Link>
