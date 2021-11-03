@@ -41,7 +41,7 @@ const TableProducts = ({ Id, Ganre, Name, Quantity, Price, ReleaseDate, GameList
                     <Link onClick={onGetCurrentGame} to="/admin/edit-product">
                         <FontAwesomeIcon icon={faEdit} />
                     </Link>
-                    <Link onClick={onDeleteGame} to="/admin/">
+                    <Link onClick={onDeleteGame} to="/admin/products">
                         <FontAwesomeIcon icon={faTrash} />
                     </Link>
                     <FontAwesomeIcon icon={faImages} />

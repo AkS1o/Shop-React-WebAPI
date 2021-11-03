@@ -6,10 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { getCurrentGame } from "../../../actions/GameListAction"
 
-const CardProducts = ({ Id, Developer, Name, Quantity, Price, GameList, getCurrentGame}) => {
+const CardProducts = ({ Id_Game, Developer, Name, Quantity, Price, GameList, GameListVM, getCurrentGame}) => {
     let onGetCurrentGame = () => {
-        const index = GameList.findIndex(elem => elem.Id === Id);
-        const game = GameList[index];
+        const index = GameListVM.findIndex(elem => elem.Id_Game === Id_Game);
+        const game = GameListVM[index];
         getCurrentGame(game)
     }
     return (
@@ -37,8 +37,8 @@ const CardProducts = ({ Id, Developer, Name, Quantity, Price, GameList, getCurre
 }
 
 const mapStateToProps = ({ GameListReducer }) => {
-    const { GameList } = GameListReducer;
-    return { GameList }
+    const { GameList, GameListVM } = GameListReducer;
+    return { GameList, GameListVM }
 }
 
 const mapDispatchToProps = {

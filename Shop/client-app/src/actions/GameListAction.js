@@ -5,6 +5,14 @@ export const getAllGames = (gameList) => {
     }
 }
 
+//export const getGamesPagination = (gameList) => {
+//    return {
+//        type: "GAMES_PAGINATION_LOADED",
+//        payload: gameList
+//    }
+//}
+
+
 export const getAllGamesVM = (gameList_vm) => {
     return {
         type: "GAMES_LOADED_VM",
@@ -37,5 +45,26 @@ export const changeGame = (gameList) => {
     return {
         type: "GAME_UPDATE",
         payload: gameList
+    }
+}
+
+export const updateSearchString = (searchString) => {
+    return {
+        type: "SEARCH_STRING_UPDATE",
+        payload: searchString
+    }
+}
+
+export const updateSearchGenre = (searchGenre) => {
+    return {
+        type: "SEARCH_GENRE_UPDATE",
+        payload: searchGenre
+    }
+}
+
+export const updateSearchPlatform = (searchPlatform) => {
+    return {
+        type: "SEARCH_PLATFORM_UPDATE",
+        payload: searchPlatform
     }
 }
