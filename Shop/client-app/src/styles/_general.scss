@@ -160,8 +160,55 @@ table {
     }
 }
 
-
 .cash-card{
+    position: relative;
     width: 400px;
-    height: 200px;
+    height: 220px;
+    padding: 1rem;
+    border-radius: 20px;
+    .cc-name { text-transform: uppercase; }
+    svg {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+    }
+}
+
+
+.multiSelectContainer {
+    margin-bottom: .75rem;
+    .searchWrapper {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        &:focus {
+            border-left: $colorSecondary;
+            outline: 0;
+            box-shadow: 0 0 0 .25rem rgba($colorSecondary,.25);
+        }
+    }
+    .chip {
+        background: $colorSecondary;
+        color: #000;
+        margin-bottom: 0;
+    }
+    .custom-close{
+        margin-left: 2px;
+    }
+    .optionListContainer{
+        li {
+            color: #000;
+            &:hover {
+                background: $colorSecondary;
+                color: #000;
+            }
+        }
+    }
+    .highlightOption {
+        background: $colorSecondary;
+    }
+    .notFound {
+        color: #000;
+        height: auto;
+        margin-top: 0;
+    }
 }
