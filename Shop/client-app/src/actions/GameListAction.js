@@ -5,12 +5,12 @@ export const getAllGames = (gameList) => {
     }
 }
 
-//export const getGamesPagination = (gameList) => {
-//    return {
-//        type: "GAMES_PAGINATION_LOADED",
-//        payload: gameList
-//    }
-//}
+export const gamePaginationChange = (gamePagination) => {
+    return {
+        type: "GAMES_PAGINATION_LOADED",
+        payload: gamePagination
+    }
+}
 
 
 export const getAllGamesVM = (gameList_vm) => {

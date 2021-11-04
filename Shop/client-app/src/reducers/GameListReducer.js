@@ -4,6 +4,7 @@ const initialState = {
     SearchString: "",
     SearchGenre: "",
     SearchPlatform: "",
+    GamePagination: "1",
     CurrentGame: null
 }
 
@@ -53,6 +54,11 @@ const GameListReducer = (state = initialState, action) => {
             return {
                 ...state,
                 SearchPlatform: action.payload
+            }
+        case "GAMES_PAGINATION_LOADED":
+            return {
+                ...state,
+                GamePagination: action.payload
             }
         default:
             return state;
