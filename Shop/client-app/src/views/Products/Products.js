@@ -1,5 +1,7 @@
 // Import
 import { Fragment } from "react";
+import { useEffect } from "react";
+import { connect } from "react-redux"
 
 // Import components
 import Header from "../../components/Header/Header";
@@ -9,7 +11,10 @@ import SitebarProducts from "../../components/Sitebar/SitebarProducts/SitebarPro
 
 import SideBarSearch from "../../components/Sitebar/SitebarSearch/SideBarSearch"
 
+
+
 const Products = () => {
+
     return (
         <Fragment>
             <Header />
