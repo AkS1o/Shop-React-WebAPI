@@ -95,7 +95,7 @@ class AddProduct extends Component {
     }
 
     onGetImage = (e) => {
-        const image = e.target.value;
+        const image = e.target.files[0].name;
         this.setState({
             Image: image
         })
@@ -300,6 +300,9 @@ class AddProduct extends Component {
         if (isRedirect === true) {
             return <Redirect to="/admin" />
         }
+
+        var imgPath = "../img/game/" + Image;
+
         return (
             <Fragment>
                 <form method="post" enctype="multipart/form-data" onSubmit={this.CreateGame}>
@@ -311,7 +314,7 @@ class AddProduct extends Component {
                                         <label>Image</label>
                                         <input type="file" name="files" id="upload" multiple onChange={this.onGetImage} />
                                     </div>
-                                    <img src="../img/battlefield-2042.jpg" alt="img" className="img-fluid" />
+                                    <img src={imgPath} alt="img" className="img-fluid" />
                                 </div>
                             </div>
                         </div>
@@ -330,19 +333,11 @@ class AddProduct extends Component {
                                                     <label>Price</label>
                                                     <input type="number" onChange={this.onGetPrice} />
                                                 </div>
-                                                {/*<div class="col-6 form-group">*/}
-                                                {/*    <label>Quantity</label>*/}
-                                                {/*    <input type="number" />*/}
-                                                {/*</div>*/}
                                                 <div class="col-6 form-group">
                                                     <label>Quantity</label>
                                                     <input type="number" onChange={this.onGetQuantity} />
                                                 </div>
                                             </div>
-                                            {/*<div class="form-group">*/}
-                                            {/*    <label>Category</label>*/}
-                                            {/*    <input type="text" />*/}
-                                            {/*</div>*/}
                                             <div class="form-group">
                                                 <label>Release date</label>
                                                 <input type="date" onChange={this.onGetReleaseDate} />
@@ -353,10 +348,6 @@ class AddProduct extends Component {
                                             </div>
                                         </div>
                                         <div className="col-6">
-                                            {/*<div class="form-group">*/}
-                                            {/*    <label>Developer</label>*/}
-                                            {/*    <input type="text" />*/}
-                                            {/*</div>*/}
                                             <div class="form-group">
                                                 <label>Developer</label>
                                                 <input type="text" onChange={this.onGetDeveloper} />
@@ -369,20 +360,12 @@ class AddProduct extends Component {
                                                 <label>Genres</label>
                                                 <select id="GenreSelect" className="custom-select" onChange={this.onGetGenreIds}>
                                                   <option defaultValue>Choose...</option>
-                                                    {/*<option value="Work">Work</option>*/}
-                                                    {/*<option value="Family">Family</option>*/}
-                                                    {/*<option value="Private">Private</option>*/}
-                                                    {/*<option value="Friend">Friend</option>*/}
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Platform</label>
                                                 <select id="platformSelect" className="custom-select" onChange={this.onGetPlatformIds}>
                                                     <option defaultValue>Choose...</option>
-                                                    {/*<option value="Work">Work</option>*/}
-                                                    {/*<option value="Family">Family</option>*/}
-                                                    {/*<option value="Private">Private</option>*/}
-                                                    {/*<option value="Friend">Friend</option>*/}
                                                 </select>
                                             </div>
                                         </div>

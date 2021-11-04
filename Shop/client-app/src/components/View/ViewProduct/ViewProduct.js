@@ -24,7 +24,7 @@ class DetailsProduct extends Component {
         Min_Storage: this.props.CurrentGame.Min_Storage,
         Min_DirectX: this.props.CurrentGame.Min_DirectX,
         Min_Graphics: this.props.CurrentGame.Min_Graphics,
-        
+
         Rec_OS: this.props.CurrentGame.Rec_OS,
         Rec_Processor: this.props.CurrentGame.Rec_Processor,
         Rec_Memory: this.props.CurrentGame.Rec_Memory,
@@ -36,20 +36,23 @@ class DetailsProduct extends Component {
         isRedirect: false
     }
     render() {
-            let {
-                Name, Quantity, Developer, Price, Description, Rating, Publisher, Image, ReleaseDate, Min_OS, Min_Processor, 
-                Min_Memory, Min_Storage, Min_DirectX, Min_Graphics, Rec_OS, Rec_Processor, Rec_Memory, Rec_Storage, Rec_DirectX, Rec_Graphics,
-                GenreIds, PlatformIds } = this.state;
+        let {
+            Name, Quantity, Developer, Price, Description, Rating, Publisher, Image, ReleaseDate, Min_OS, Min_Processor,
+            Min_Memory, Min_Storage, Min_DirectX, Min_Graphics, Rec_OS, Rec_Processor, Rec_Memory, Rec_Storage, Rec_DirectX, Rec_Graphics,
+            GenreIds, PlatformIds } = this.state;
         let { isRedirect } = this.state;
         if (isRedirect === true) {
             return <Redirect to="/admin" />
         }
+
+        var imgPath = "../img/game/" + Image;
+
         return (
             <Fragment>
                 <section className="product">
                     <div className="row">
                         <div className="col-6">
-                            <img src={Image} alt="img" className="img-fluid" />
+                            <img src={imgPath} alt="img" className="img-fluid" />
                         </div>
                         <div className="col-6">
                             <h2>{Name}</h2>
@@ -76,7 +79,7 @@ class DetailsProduct extends Component {
                                 <h3 className="title-line">About Game</h3>
                                 <p>
                                     {Description}
-                            </p>
+                                </p>
                             </div>
                         </div>
                     </div>

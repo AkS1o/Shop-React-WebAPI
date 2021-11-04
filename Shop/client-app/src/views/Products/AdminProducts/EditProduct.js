@@ -231,7 +231,7 @@ class EditProduct extends Component {
 
     UpdateGame = (e) => {
         e.preventDefault();
-        const {Id_Game, Name, Quantity, Developer, Price, Description, Rating, Publisher, Image, ReleaseDate, Min_OS, Min_Processor,
+        const { Id_Game, Name, Quantity, Developer, Price, Description, Rating, Publisher, Image, ReleaseDate, Min_OS, Min_Processor,
             Min_Memory, Min_Storage, Min_DirectX, Min_Graphics, Rec_OS, Rec_Processor, Rec_Memory, Rec_Storage, Rec_DirectX, Rec_Graphics,
             GenreIds, PlatformIds, /*CurrentGameVM*/ CurrentPlatformId, CurrentGenreId, CurrentPlatformName, CurrentGenreName } = this.state;
         const newGame = {
@@ -340,7 +340,7 @@ class EditProduct extends Component {
         //    if (tmplist3 != null) {
         //        tmplist3.forEach((item) => {
         //            if (this.props.CurrentGameVM.GenreIds[0] == item.Id)
-                    
+
         //            choose_genre_option.setAttribute("value", item.Name)
         //            choose_genre_option.innerHTML = item.Name;
         //            this.props.CurrentGenre = item.Name;
@@ -371,6 +371,9 @@ class EditProduct extends Component {
         if (isRedirect === true) {
             return <Redirect to="/admin" />
         }
+
+        var imgPath = "../img/game/" + Image;
+
         return (
             <Fragment>
                 <form method="post" enctype="multipart/form-data" onSubmit={this.UpdateGame}>
@@ -382,7 +385,7 @@ class EditProduct extends Component {
                                         <label>Image</label>
                                         <input type="file" name="files" id="upload" multiple onChange={this.onGetImage} />
                                     </div>
-                                    <img src="../img/battlefield-2042.jpg" alt="img" className="img-fluid" />
+                                    <img src={imgPath} alt="img" className="img-fluid" />
                                 </div>
                             </div>
                         </div>
@@ -399,21 +402,14 @@ class EditProduct extends Component {
                                             <div className="row">
                                                 <div class="col-6 form-group">
                                                     <label>Price</label>
-                                                    <input type="number" defaultValue={Price}  onChange={this.onGetPrice} />
+                                                    <input type="number" defaultValue={Price} onChange={this.onGetPrice} />
                                                 </div>
-                                                {/*<div class="col-6 form-group">*/}
-                                                {/*    <label>Quantity</label>*/}
-                                                {/*    <input type="number" />*/}
-                                                {/*</div>*/}
                                                 <div class="col-6 form-group">
                                                     <label>Quantity</label>
                                                     <input type="number" defaultValue={Quantity} onChange={this.onGetQuantity} />
                                                 </div>
                                             </div>
-                                            {/*<div class="form-group">*/}
-                                            {/*    <label>Category</label>*/}
-                                            {/*    <input type="text" />*/}
-                                            {/*</div>*/}
+
                                             <div class="form-group">
                                                 <label>Release date</label>
                                                 <input type="date" defaultValue={ReleaseDate} onChange={this.onGetReleaseDate} />
@@ -424,10 +420,6 @@ class EditProduct extends Component {
                                             </div>
                                         </div>
                                         <div className="col-6">
-                                            {/*<div class="form-group">*/}
-                                            {/*    <label>Developer</label>*/}
-                                            {/*    <input type="text" />*/}
-                                            {/*</div>*/}
                                             <div class="form-group">
                                                 <label>Developer</label>
                                                 <input type="text" defaultValue={Developer} onChange={this.onGetDeveloper} />
@@ -440,20 +432,12 @@ class EditProduct extends Component {
                                                 <label>Genres</label>
                                                 <select id="GenreSelect" className="custom-select" onChange={this.onGetGenreIds}>
                                                     <option id="choose_genre_option">asd</option>
-                                                    {/*<option value="Work">Work</option>*/}
-                                                    {/*<option value="Family">Family</option>*/}
-                                                    {/*<option value="Private">Private</option>*/}
-                                                    {/*<option value="Friend">Friend</option>*/}
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Platform</label>
                                                 <select id="platformSelect" className="custom-select" onChange={this.onGetPlatformIds}>
                                                     <option id="choose_platform_option">asd</option>
-                                                    {/*<option value="Work">Work</option>*/}
-                                                    {/*<option value="Family">Family</option>*/}
-                                                    {/*<option value="Private">Private</option>*/}
-                                                    {/*<option value="Friend">Friend</option>*/}
                                                 </select>
                                             </div>
                                         </div>
