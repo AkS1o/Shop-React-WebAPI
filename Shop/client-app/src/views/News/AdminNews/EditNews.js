@@ -1,3 +1,4 @@
+import React from 'react';
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -7,7 +8,6 @@ import APIService from "../../../services/APIService";
 
 import { changeNews } from "../../../actions/NewsListAction"
 
-import React from 'react';
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 
@@ -36,7 +36,7 @@ class EditNews extends Component {
     }
 
     onGetImage = (e) => {
-        const image = e.target.value;
+        const image = e.target.files[0].name;
         this.setState({
             Image: image
         })
@@ -99,12 +99,16 @@ class EditNews extends Component {
         });
     };
 
+
     render() {
         let { Name, Publisher, Description, ShortDescription, Image, ReleaseDate } = this.state;
         let { isRedirect } = this.state;
         if (isRedirect === true) {
             return <Redirect to="/admin" />
         }
+
+        var imgPath = "../img/news/" + Image;
+
         return (
             <Fragment>
                 <form method="post" enctype="multipart/form-data" onSubmit={this.UpdateNews}>
@@ -116,7 +120,7 @@ class EditNews extends Component {
                                         <label>Image</label>
                                         <input type="file" name="files" id="upload" defaultValue={Image} onChange={this.onGetImage} multiple />
                                     </div>
-                                    <img src="../img/battlefield-2042.jpg" alt="img" className="img-fluid" />
+                                    <img src={imgPath} alt="img" className="img-fluid" />
                                 </div>
                             </div>
                         </div>
@@ -154,25 +158,25 @@ class EditNews extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="row">
-                        {/*<div className="col-6">*/}
-                        {/*    <div className="card">*/}
-                        {/*        <div className="card-body">*/}
-                        {/*            <div class="form-group">*/}
-                        {/*                <label>Description</label>*/}
-                        {/*                <Editor*/}
-                        {/*                    onChange={this.onGetDescription}*/}
-                        {/*                    editorState={this.state.editorState}*/}
-                        {/*                    wrapperClassName="style-wrapper"*/}
-                        {/*                    toolbarClassName="style-toolbar"*/}
-                        {/*                    editorClassName="style-editor"*/}
-                        {/*                    onEditorStateChange={this.onEditorStateChange}*/}
-                        {/*                />*/}
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-                    </div>
+                    {/*<div className="row">*/}
+                    {/*    */}{/*<div className="col-6">*/}
+                    {/*    */}{/*    <div className="card">*/}
+                    {/*    */}{/*        <div className="card-body">*/}
+                    {/*    */}{/*            <div class="form-group">*/}
+                    {/*    */}{/*                <label>Description</label>*/}
+                    {/*    */}{/*                <Editor*/}
+                    {/*    */}{/*                    onChange={this.onGetDescription}*/}
+                    {/*    */}{/*                    editorState={this.state.editorState}*/}
+                    {/*    */}{/*                    wrapperClassName="style-wrapper"*/}
+                    {/*    */}{/*                    toolbarClassName="style-toolbar"*/}
+                    {/*    */}{/*                    editorClassName="style-editor"*/}
+                    {/*    */}{/*                    onEditorStateChange={this.onEditorStateChange}*/}
+                    {/*    */}{/*                />*/}
+                    {/*    */}{/*            </div>*/}
+                    {/*    */}{/*        </div>*/}
+                    {/*    */}{/*    </div>*/}
+                    {/*    */}{/*</div>*/}
+                    {/*</div>*/}
                     <div class="d-flex justify-content-center">
                         <Link to="/admin/news" class="btn btn-outline-white mx-2">Back</Link>
                         <input type="submit" class="btn btn-primary mx-2" value="Edit" />

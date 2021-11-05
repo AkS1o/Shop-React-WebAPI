@@ -6,18 +6,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { getCurrentGame } from "../../../actions/GameListAction"
 
-const CardProducts = ({ Id_Game, Developer, Name, Quantity, Price, GameList, GameListVM, getCurrentGame}) => {
+const CardProducts = ({ Id_Game, Developer, Name, Image, Quantity, Price, GameList, GameListVM, getCurrentGame}) => {
     let onGetCurrentGame = () => {
         const index = GameListVM.findIndex(elem => elem.Id_Game === Id_Game);
         const game = GameListVM[index];
         getCurrentGame(game)
     }
+
+    var imgPath = "../img/game/" + Image;
+
     return (
         <Fragment>
             <div className="col-3">
                 <Link to="/productsId" className="card card-products" onClick={onGetCurrentGame}>
                     <div className="image-wrap">
-                        <img src="../img/bf2048.png" alt="img" className="img-fluid" />
+                        <img src={imgPath} alt="img" className="img-fluid" />
                     </div>
                     <div className="card-body">
                         <div className="subtitle">{Developer}</div>

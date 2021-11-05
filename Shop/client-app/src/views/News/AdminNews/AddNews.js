@@ -35,7 +35,7 @@ class AddNews extends Component {
     }
 
     onGetImage = (e) => {
-        const image = e.target.value;
+        const image = e.target.files[0].name;
         this.setState({
             Image: image
         })
@@ -102,6 +102,9 @@ class AddNews extends Component {
         if (isRedirect === true) {
             return <Redirect to="/admin" />
         }
+
+        var imgPath = "../img/news/" + Image;
+
         return (
             <Fragment>
                 <form method="post" enctype="multipart/form-data" onSubmit={this.CreateNews}>
@@ -113,7 +116,7 @@ class AddNews extends Component {
                                         <label>Image</label>
                                         <input type="file" name="files" id="upload" onChange={this.onGetImage} multiple />
                                     </div>
-                                    <img src="../img/battlefield-2042.jpg" alt="img" className="img-fluid" />
+                                    <img src={imgPath} alt="img" className="img-fluid" />
                                 </div>
                             </div>
                         </div>

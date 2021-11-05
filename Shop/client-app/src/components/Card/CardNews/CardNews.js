@@ -10,12 +10,15 @@ const CardNews = ({ Id, Name, Publisher, ShortDescription, Image, ReleaseDate, N
         const newss = NewsList[index];
         getCurrentNews(newss)
     }
+
+    var imgPath = "../img/news/" + Image;
+
     return (
         <Fragment>
             <div className="col-4">
                 <div className="card card-news">
                     <Link to="#" className="image-wrap">
-                        <img src={ Image } alt="img" className="img-fluid" />
+                        <img src={imgPath} alt="img" className="img-fluid" />
                     </Link>
                     <div className="card-body">
                         <div className="subtitle">{ReleaseDate}</div>

@@ -23,6 +23,9 @@ class DetailsNews extends Component {
         if (isRedirect === true) {
             return <Redirect to="/admin" />
         }
+
+        var imgPath = "../img/news/" + Image;
+
         return (
             <Fragment>
                 <section className="news">
@@ -30,7 +33,7 @@ class DetailsNews extends Component {
                         <div className="col-md-8 mx-auto">
                             <div className="post-header">
                                 <div className="img-wrap">
-                                    <img src={Image} alt="img" />
+                                    <img src={imgPath} alt="img" />
                                 </div>
                                 <div className="content">
                                     <h3>{Name}</h3>
