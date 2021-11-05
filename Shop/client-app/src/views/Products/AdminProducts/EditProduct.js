@@ -100,7 +100,7 @@ class EditProduct extends Component {
     }
 
     onGetImage = (e) => {
-        const image = e.target.value;
+        const image = e.target.files[0].name;
         this.setState({
             Image: image
         })
