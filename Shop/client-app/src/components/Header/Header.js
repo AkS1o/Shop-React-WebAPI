@@ -1,13 +1,85 @@
 import React from "react"
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { connect } from "react-redux"
 
 import { faUser, faCog, faUserCircle, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { loginBuyer } from "../../actions/BuyerListAction";
+import { getAllBuyersVM } from "../../actions/BuyerListAction";
+import { changeCurrentBuyerVM } from "../../actions/BuyerListAction";
+import apiService from "../../services/APIService";
 
 import Logo from "../Logo/Logo";
 
-const Header = () => {
+
+const Header = ({ CurrentBuyer, CurrentBuyerVM, loginBuyer, getAllBuyersVM, changeCurrentBuyerVM, BuyersListVM }) => {
+
+    useEffect(() => {
+
+        apiService.fetchCurentBuyer().then(data => {
+            loginBuyer(data.Buyer);
+        })
+
+        if (CurrentBuyer == null || CurrentBuyer == undefined) {
+            console.log("current buyer", CurrentBuyer)
+            let elem = document.getElementById("login_regist");
+            let link1 = document.createElement("a")
+            link1.setAttribute("class", "btn btn-outline-primary");
+            link1.setAttribute("href", "/login");
+            link1.innerHTML = "Login"
+
+            let link2 = document.createElement("a")
+            link2.setAttribute("class", "btn btn-primary");
+            link2.setAttribute("href", "/register");
+            link2.innerHTML = "Register"
+
+            elem.appendChild(link1);
+            elem.appendChild(link2);
+        }
+        else {
+            console.log("current buyer", CurrentBuyer)
+
+            let elem = document.getElementById("login_regist");
+
+            let link1 = document.createElement("a")
+            link1.setAttribute("class", "btn btn-outline-primary");
+            link1.innerHTML = CurrentBuyer.Email;
+
+            let btn = document.createElement("button");
+            btn.setAttribute("class", "btn btn-primary")
+            btn.innerHTML = "LOGOUT";
+
+            elem.appendChild(link1);
+            elem.appendChild(btn);
+
+
+            apiService.fetchBuyerListVM().then(data => {
+                getAllBuyersVM(data.List);
+            })
+
+
+            if (CurrentBuyerVM == null || CurrentBuyerVM == undefined) {
+                BuyersListVM.forEach((item) => {
+                    if (item.Email == CurrentBuyer.Email) {
+                        changeCurrentBuyerVM(item);
+                    }
+                })
+            }
+            else {
+                changeCurrentBuyerVM(CurrentBuyerVM);
+            }
+            
+
+
+            console.log("getAllBuyersVM", BuyersListVM);
+
+            console.log("currentBuyerVM", CurrentBuyerVM);
+        }
+
+    }, []);
+
     const dropdownOpen = () => {
         let dropdownMenu = document.getElementById('dropdown-menu');
         dropdownMenu.style.display = 'block';
@@ -42,9 +114,9 @@ const Header = () => {
                                 <li><Link to="/contacts">Contacts</Link></li>
                             </ul>
                         </nav>
-                        <div className="btn-group">
-                            <Link to="/login" className="btn btn-outline-primary">Login</Link>
-                            <Link to="/register" className="btn btn-primary">Register</Link>
+                        <div className="btn-group" id="login_regist">
+                            {/*<Link to="/login" className="btn btn-outline-primary">Login</Link>*/}
+                            {/*<Link to="/register" className="btn btn-primary">Register</Link>*/}
                         </div>
                         <div id="dropdown" className="dropdown" onClick={dropdownOpen}>
                             <div id="dropdown-toggle" className="dropdown-toggle">
@@ -78,4 +150,15 @@ const Header = () => {
     )
 }
 
-export default Header;
+const mapStateToProps = ({  BuyerListReducer }) => {
+    const { CurrentBuyer, CurrentBuyerVM, BuyersListVM } = BuyerListReducer;
+    return { CurrentBuyer, CurrentBuyerVM, BuyersListVM }
+}
+
+const mapDispatchToProps = {
+    loginBuyer,
+    getAllBuyersVM,
+    changeCurrentBuyerVM
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

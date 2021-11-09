@@ -5,6 +5,8 @@ class APIService extends Component {
     apiGenres = "/api/Genres/"
     apiPlatforms = "/api/Platform/"
     apiNews = "/api/News/"
+    apiBuyers = "/api/Buyers/"
+    apiAuth = "/api/Auth/"
 
     async fetchContactList() {
         console.log("apiGames", this.apiGames + "get-games")
@@ -214,6 +216,107 @@ class APIService extends Component {
                 },
                 method: "PUT",
                 body: JSON.stringify(News)
+            })
+            .then(res => console.log(res))
+            .catch(res => console.log(res))
+    }
+
+
+
+    async fetchBuyerList() {
+        const List = await fetch(this.apiBuyers + "get-buyers")
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                if (data === null)
+                    return { List: [] }
+                else
+                    return { List: data };
+            })
+            .catch(error => console.log(error));
+        return List;
+    }
+
+    async fetchBuyerListVM() {
+        const List = await fetch(this.apiBuyers + "get-buyersVM")
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                if (data === null)
+                    return { List: [] }
+                else
+                    return { List: data };
+            })
+            .catch(error => console.log(error));
+        return List;
+    }
+
+    async fetchCurentBuyer() {
+        const Buyer = await fetch(this.apiAuth + "user")
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                if (data === null)
+                    return { Buyer: null }
+                else
+                    return { Buyer: data };
+            })
+            .catch(error => console.log(error));
+        return Buyer;
+    }
+
+    async addBuyer(Buyer) {
+        await fetch(`${this.apiAuth}register`,
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify(Buyer)
+            })
+            .then(res => console.log(res))
+            .catch(res => console.log(res))
+    }
+
+    async loginBuyer(Buyer) {
+        await fetch(`${this.apiAuth}login`,
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify(Buyer)
+            })
+            .then(res => console.log(res))
+            .catch(res => console.log(res))
+    }
+
+    async deleteBuyer(Id) {
+        await fetch(`${this.apiBuyers}delete-buyer/${Id}`,
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: "DELETE",
+                body: JSON.stringify(Id)
+            })
+            .then(res => console.log(res))
+            .catch(res => console.log(res))
+    }
+
+    async updateBuyer(Buyer) {
+        await fetch(`${this.apiBuyers}update-news`,
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: "PUT",
+                body: JSON.stringify(Buyer)
             })
             .then(res => console.log(res))
             .catch(res => console.log(res))

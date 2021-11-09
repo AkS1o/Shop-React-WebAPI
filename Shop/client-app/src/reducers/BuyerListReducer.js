@@ -1,6 +1,15 @@
 ﻿const initialState = {
     BuyersList: [],
-    CurrentBuyer: null
+    BuyersListVM: [],
+    //CurrentBuyer: {
+    //    Name: "",
+    //    Surname: "",
+    //    Password: "",
+    //    NickName: "",
+    //    Email: "",
+    //}
+    CurrentBuyer: null,
+    CurrentBuyerVM: null
 }
 
 const BuyerListReducer = (state = initialState, action) => {
@@ -9,6 +18,11 @@ const BuyerListReducer = (state = initialState, action) => {
             return {
                 ...state,
                 BuyersList: action.payload
+            }
+        case "BUYERS_VM_LOADED":
+            return {
+                ...state,
+                BuyersListVM: action.payload
             }
         case "BUYER_ADD":
             return {
@@ -20,10 +34,15 @@ const BuyerListReducer = (state = initialState, action) => {
                 ...state,
                 BuyersList: action.payload
             }
-        case "BUYER_GET":
+        case "LOGIN_BUYER":
             return {
                 ...state,
                 CurrentBuyer: action.payload
+            }
+        case "CHANGE_CURRENT_BUYER_VM":
+            return {
+                ...state,
+                CurrentBuyerVM: action.payload
             }
         case "BUYER_UPDATE":
             return {

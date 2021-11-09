@@ -1,4 +1,5 @@
 ﻿using Shop.Data.Models;
+using Shop.Data.ViesModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,35 @@ namespace Shop.Data.Services
             return buyers;
         }
 
+        public IEnumerable<BuyerVM> GetbuyersVM()
+        {
+            var buyers = _context.Buyers;
+            var buyersList = buyers.ToList();
+            List<BuyerVM> buyerListVM = new List<BuyerVM>();
+            foreach (var item in buyersList)
+            {
+                BuyerVM buyer = new BuyerVM()
+                {
+                    Buyer_Id = item.Id,
+                    Name = item.Name,
+                    Surname = item.Surname,
+                    Nickname = item.Nickname,
+                    Email = item.Email,
+                    Password = item.Password,
+                    Image = item.Image,
+                    GamesIds = new List<int>(),
+                };
+                buyerListVM.Add(buyer);
+            }
+
+            return buyerListVM;
+        }
+
         public void AddBuyers(Buyer buyer)
         {
             var _buyer = new Buyer()
             {
-                Hickname = buyer.Hickname,
+                Nickname = buyer.Nickname,
                 Name = buyer.Name,
                 Surname = buyer.Surname,
                 Password = buyer.Password,

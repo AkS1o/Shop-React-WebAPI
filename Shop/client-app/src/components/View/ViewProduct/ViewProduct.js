@@ -35,6 +35,13 @@ class DetailsProduct extends Component {
         PlatformIds: this.props.CurrentGame.PlatformIds,
         isRedirect: false
     }
+
+    buyProduct = () => {
+        let { Id } = this.state;
+        this.props.CurrentBuyerVM.GamesIds.push(Id);
+        console.log("CurrentBuyerVM buy games", this.props.CurrentBuyerVM);
+    }
+        
     render() {
         let {
             Name, Quantity, Developer, Price, Description, Rating, Publisher, Image, ReleaseDate, Min_OS, Min_Processor,
@@ -65,10 +72,10 @@ class DetailsProduct extends Component {
                             </ul>
                             <div className="row">
                                 <div className="col-3">
-                                    <button className="btn btn-outline-primary">Add to card</button>
+                                    {/*<button className="btn btn-outline-primary">Add to card</button>*/}
                                 </div>
                                 <div className="col-3">
-                                    <button className="btn btn-primary">Buy</button>
+                                    <button className="btn btn-outline-primary" onClick={this.buyProduct}>Buy</button>
                                 </div>
                             </div>
                         </div>
@@ -119,9 +126,10 @@ class DetailsProduct extends Component {
     }
 }
 
-const mapStateToProps = ({ GameListReducer }) => {
+const mapStateToProps = ({ GameListReducer, BuyerListReducer }) => {
     const { CurrentGame } = GameListReducer;
-    return { CurrentGame }
+    const { CurrentBuyerVM } = BuyerListReducer;
+    return { CurrentGame, CurrentBuyerVM }
 }
 
 const mapDispatchToProps = {

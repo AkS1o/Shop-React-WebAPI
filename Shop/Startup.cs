@@ -32,7 +32,9 @@ namespace Shop
         {
             services.AddMvc().AddJsonOptions(option => option.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddControllers();
-            
+
+            services.AddTransient<AuthService>();
+            services.AddTransient<JwtService>();
             services.AddTransient<GamesService>();
             services.AddTransient<GenreService>();       
             services.AddTransient<PlatformService>();

@@ -27,6 +27,13 @@ namespace Shop.Controllers
             return Ok(buyers);
         }
 
+        [HttpGet("get-buyersVM")]
+        public IActionResult GetbuyersVM()
+        {
+            var buyers = _buyersService.GetbuyersVM();
+            return Ok(buyers);
+        }
+
         [HttpPost("add-buyers")]
         public IActionResult Addbuyer([FromBody] Buyer buyer)
         {

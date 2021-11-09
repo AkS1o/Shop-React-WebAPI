@@ -21,6 +21,11 @@ namespace Shop.Data
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Buyer> Buyers { get; set; }
         public DbSet<News> News { get; set; }
-        
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Buyer>(entity => { entity.HasIndex(e => e.Email).IsUnique(); });
+        }
+
     }
 }

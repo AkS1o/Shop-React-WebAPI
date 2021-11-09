@@ -27,6 +27,11 @@ import User from "./views/User/User";
 
 import NoMatchPage from "./views/NoMatchPage/NoMatchPage";
 
+//import Personal from "../src/views/User/UserSettings/Personal";
+//import Payments from "../src/views/User/UserSettings/Payments";
+//import Transactions from "../src/views//User/UserSettings/Transactions";
+//import Password from "../src/views/User/UserSettings/Password";
+
 import "./../node_modules/bootstrap/dist/css/bootstrap-grid.min.css"
 import "./index.scss"
 
@@ -52,6 +57,7 @@ const App = () => {
                     <Route path="/admin-login" component={AdminLogin} />
 
                     <Route path="/user" component={User} />
+
 
                     <Route exact path="*" component={NoMatchPage} />
                 </Switch>

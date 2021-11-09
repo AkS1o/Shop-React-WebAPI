@@ -14,9 +14,16 @@ import { getAllGenres } from "../../actions/GenreListAction"
 import { getAllPlatforms } from "../../actions/PlatformListAction"
 
 import apiService from "../../services/APIService";
+import { getAllBuyers } from "../../actions/BuyerListAction";
+import { loginBuyer } from "../../actions/BuyerListAction";
 
-const Home = ({ getAllGenres, getAllPlatforms, GameList, GenreList, PlatformList, GameListVM, SearchString, SearchGenre, SearchPlatform, getAllGames, getAllGamesVM, GamePagination }) => {
+
+const Home = ({ loginBuyer, CurrentBuyer, getAllGenres, getAllPlatforms, getAllBuyers, GameList, GenreList, PlatformList, GameListVM, SearchString, SearchGenre, SearchPlatform, getAllGames, getAllGamesVM, GamePagination }) => {
     useEffect(() => {
+        apiService.fetchBuyerList().then(data => {
+            getAllBuyers(data.List);
+        })
+
         apiService.fetchContactList().then(data => {
             getAllGames(data.List);
         })
@@ -33,6 +40,14 @@ const Home = ({ getAllGenres, getAllPlatforms, GameList, GenreList, PlatformList
             getAllGenres(data.List);
         });
 
+       /* if (CurrentBuyer != null && CurrentBuyer != undefined) {*/
+            console.log("current buyer", CurrentBuyer)
+
+            apiService.fetchCurentBuyer().then(data => {
+                loginBuyer(data.Buyer);
+            })
+
+        /*}*/
 
     }, []);
 
@@ -47,18 +62,21 @@ const Home = ({ getAllGenres, getAllPlatforms, GameList, GenreList, PlatformList
     )
 }
 
-const mapStateToProps = ({ GameListReducer, GenreListReducer, PlatformListReducer }) => {
+const mapStateToProps = ({ GameListReducer, GenreListReducer, PlatformListReducer, BuyerListReducer }) => {
     const { GameList, GameListVM, SearchString, SearchGenre, SearchPlatform, GamePagination } = GameListReducer;
     const { GenreList } = GenreListReducer;
     const { PlatformList } = PlatformListReducer;
-    return { GameList, GenreList, PlatformList, GameListVM, SearchString, SearchGenre, SearchPlatform, GamePagination }
+    const { CurrentBuyer } = BuyerListReducer;
+    return { GameList, GenreList, PlatformList, GameListVM, SearchString, SearchGenre, SearchPlatform, GamePagination, CurrentBuyer }
 }
 
 const mapDispatchToProps = {
     getAllGames,
     getAllGamesVM,
     getAllGenres,
-    getAllPlatforms
+    getAllPlatforms,
+    getAllBuyers,
+    loginBuyer
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

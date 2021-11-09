@@ -5,10 +5,31 @@
     }
 }
 
-export const addBuyers = (buyersList) => {
+export const getAllBuyersVM = (buyersListVM) => {
+    return {
+        type: "BUYERS_VM_LOADED",
+        payload: buyersListVM
+    }
+}
+
+export const addBuyer = (buyersList) => {
     return {
         type: "BUYER_ADD",
         payload: buyersList
+    }
+}
+
+export const loginBuyer = (buyer) => {
+    return {
+        type: "LOGIN_BUYER",
+        payload: buyer
+    }
+}
+
+export const changeCurrentBuyerVM = (buyer) => {
+    return {
+        type: "CHANGE_CURRENT_BUYER_VM",
+        payload: buyer
     }
 }
 
