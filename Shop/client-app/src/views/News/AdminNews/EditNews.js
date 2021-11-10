@@ -158,25 +158,6 @@ class EditNews extends Component {
                             </div>
                         </div>
                     </div>
-                    {/*<div className="row">*/}
-                    {/*    */}{/*<div className="col-6">*/}
-                    {/*    */}{/*    <div className="card">*/}
-                    {/*    */}{/*        <div className="card-body">*/}
-                    {/*    */}{/*            <div class="form-group">*/}
-                    {/*    */}{/*                <label>Description</label>*/}
-                    {/*    */}{/*                <Editor*/}
-                    {/*    */}{/*                    onChange={this.onGetDescription}*/}
-                    {/*    */}{/*                    editorState={this.state.editorState}*/}
-                    {/*    */}{/*                    wrapperClassName="style-wrapper"*/}
-                    {/*    */}{/*                    toolbarClassName="style-toolbar"*/}
-                    {/*    */}{/*                    editorClassName="style-editor"*/}
-                    {/*    */}{/*                    onEditorStateChange={this.onEditorStateChange}*/}
-                    {/*    */}{/*                />*/}
-                    {/*    */}{/*            </div>*/}
-                    {/*    */}{/*        </div>*/}
-                    {/*    */}{/*    </div>*/}
-                    {/*    */}{/*</div>*/}
-                    {/*</div>*/}
                     <div class="d-flex justify-content-center">
                         <Link to="/admin/news" class="btn btn-outline-white mx-2">Back</Link>
                         <input type="submit" class="btn btn-primary mx-2" value="Edit" />

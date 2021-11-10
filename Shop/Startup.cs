@@ -81,7 +81,7 @@ namespace Shop
                 spa.Options.SourcePath = "client-app";
                 if (env.IsDevelopment())
                 {
-                    spa.Options.StartupTimeout = TimeSpan.FromSeconds(500);
+                    spa.Options.StartupTimeout = TimeSpan.FromSeconds(50000);
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });

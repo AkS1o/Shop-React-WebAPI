@@ -368,13 +368,13 @@ class AddProduct extends Component {
                                                 <label>Publisher</label>
                                                 <input type="text" onChange={this.onGetPublisher} />
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-select">
                                                 <label>Genres</label>
                                                 <select id="GenreSelect" className="custom-select" onChange={this.onGetGenreIds}>
                                                   <option defaultValue>Choose...</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-select">
                                                 <label>Platform</label>
                                                 <select id="platformSelect" className="custom-select" onChange={this.onGetPlatformIds}>
                                                     <option defaultValue>Choose...</option>

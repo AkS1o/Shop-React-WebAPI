@@ -439,13 +439,13 @@ class EditProduct extends Component {
                                                 <label>Publisher</label>
                                                 <input type="text" defaultValue={Publisher} onChange={this.onGetPublisher} />
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-select">
                                                 <label>Genres</label>
                                                 <select id="GenreSelect" className="custom-select" onChange={this.onGetGenreIds}>
                                                     <option id="choose_genre_option">asd</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-select">
                                                 <label>Platform</label>
                                                 <select id="platformSelect" className="custom-select" onChange={this.onGetPlatformIds}>
                                                     <option id="choose_platform_option">asd</option>
