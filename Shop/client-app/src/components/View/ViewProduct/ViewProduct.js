@@ -33,13 +33,31 @@ class DetailsProduct extends Component {
         Rec_Graphics: this.props.CurrentGame.Rec_Graphics,
         GenreIds: this.props.CurrentGame.GenreIds,
         PlatformIds: this.props.CurrentGame.PlatformIds,
-        isRedirect: false
+        isRedirect: false,
+
     }
 
     buyProduct = () => {
-        let { Id } = this.state;
-        this.props.CurrentBuyerVM.GamesIds.push(Id);
-        console.log("CurrentBuyerVM buy games", this.props.CurrentBuyerVM);
+        if (this.props.CurrentBuyerVM != null) {
+            let { Id } = this.state;
+            this.props.CurrentBuyerVM.GamesIds.push(Id);
+            
+        }
+        //else {
+
+        //    let buyDiv = document.getElementById("buyDiv");
+        //    if (buyDiv.childNodes.length >= 2) {
+        //        let pp = document.getElementById("pId");
+        //        buyDiv.removeChild(pp)
+        //    }
+
+        //    let p = document.createElement("p");
+        //    p.setAttribute("class", "text-danger");
+        //    p.setAttribute("id", "pId")
+        //    p.innerHTML = "Login to your account";
+
+        //    buyDiv.appendChild(p);
+        //}
     }
         
     render() {
@@ -74,8 +92,8 @@ class DetailsProduct extends Component {
                                 <div className="col-3">
                                     {/*<button className="btn btn-outline-primary">Add to card</button>*/}
                                 </div>
-                                <div className="col-3">
-                                    <button className="btn btn-outline-primary" onClick={this.buyProduct}>Buy</button>
+                                <div id="buyDiv" className="col-3">
+                                    <Link to="/products" className="btn btn-outline-primary" onClick={this.buyProduct}>Buy</Link>
                                 </div>
                             </div>
                         </div>

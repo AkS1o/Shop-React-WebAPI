@@ -11,18 +11,32 @@ import { getAllBuyersVM } from "../../actions/BuyerListAction";
 import { changeCurrentBuyerVM } from "../../actions/BuyerListAction";
 import apiService from "../../services/APIService";
 
+import { getAllGames } from "../../actions/GameListAction"
+import { getAllGamesVM } from "../../actions/GameListAction"
+
 import Logo from "../Logo/Logo";
 
 
-const Header = ({ CurrentBuyer, CurrentBuyerVM, loginBuyer, getAllBuyersVM, changeCurrentBuyerVM, BuyersListVM }) => {
+const Header = ({ getAllGames, getAllGamesVM, CurrentBuyer, CurrentBuyerVM, loginBuyer, getAllBuyersVM, changeCurrentBuyerVM, BuyersListVM, GameListVM, GameList }) => {
 
     useEffect(() => {
+
+        console.log("currentBuyerHeader", CurrentBuyer)
+        console.log("currentBuyerVVMMHeader", CurrentBuyerVM)
+
+        apiService.fetchContactList().then(data => {
+            getAllGames(data.List);
+        })
+
+        apiService.fetchGame_vm_List().then(data => {
+            getAllGamesVM(data.List);
+        })
 
         apiService.fetchCurentBuyer().then(data => {
             loginBuyer(data.Buyer);
         })
 
-        if (CurrentBuyer == null || CurrentBuyer == undefined) {
+        if (CurrentBuyerVM == null || CurrentBuyerVM == undefined) {
             console.log("current buyer", CurrentBuyer)
             let elem = document.getElementById("login_regist");
             let link1 = document.createElement("a")
@@ -37,8 +51,12 @@ const Header = ({ CurrentBuyer, CurrentBuyerVM, loginBuyer, getAllBuyersVM, chan
 
             elem.appendChild(link1);
             elem.appendChild(link2);
+
+            let prof = document.getElementById("dropdown");
+            prof.setAttribute("class", "dropdown");
+                
         }
-        else {
+        else /*if (CurrentBuyer != null && CurrentBuyer != undefined)*/ {
             console.log("current buyer", CurrentBuyer)
 
             let elem = document.getElementById("login_regist");
@@ -49,6 +67,8 @@ const Header = ({ CurrentBuyer, CurrentBuyerVM, loginBuyer, getAllBuyersVM, chan
 
             let btn = document.createElement("button");
             btn.setAttribute("class", "btn btn-primary")
+            btn.setAttribute("onClick", logOut)
+            btn.onclick = function () { logOut() }
             btn.innerHTML = "LOGOUT";
 
             elem.appendChild(link1);
@@ -71,7 +91,10 @@ const Header = ({ CurrentBuyer, CurrentBuyerVM, loginBuyer, getAllBuyersVM, chan
                 changeCurrentBuyerVM(CurrentBuyerVM);
             }
             
-
+            let prof = document.getElementById("dropdown");
+            prof.setAttribute("class", "dropdown");
+            prof.setAttribute("onClick", dropdownOpen);
+            prof.onclick = function () { dropdownOpen() }
 
             console.log("getAllBuyersVM", BuyersListVM);
 
@@ -79,6 +102,40 @@ const Header = ({ CurrentBuyer, CurrentBuyerVM, loginBuyer, getAllBuyersVM, chan
         }
 
     }, []);
+
+    const logOut = () => {
+        let buyer = null;
+        apiService.logOutBuyer();
+        changeCurrentBuyerVM(buyer);
+        loginBuyer(buyer);
+
+
+
+        let elem = document.getElementById("login_regist");
+
+        while (elem.firstChild) {
+            elem.removeChild(elem.firstChild);
+        }
+
+        let link1 = document.createElement("a")
+        link1.setAttribute("class", "btn btn-outline-primary");
+        link1.setAttribute("href", "/login");
+        link1.innerHTML = "Login"
+
+        let link2 = document.createElement("a")
+        link2.setAttribute("class", "btn btn-primary");
+        link2.setAttribute("href", "/register");
+        link2.innerHTML = "Register"
+
+        elem.appendChild(link1);
+        elem.appendChild(link2);
+
+        let prof = document.getElementById("dropdown");
+        prof.setAttribute("class", "dropdown");
+
+        console.log("logOut userVM", CurrentBuyerVM);
+        console.log("logOut user", CurrentBuyer);
+    }
 
     const dropdownOpen = () => {
         let dropdownMenu = document.getElementById('dropdown-menu');
@@ -118,7 +175,8 @@ const Header = ({ CurrentBuyer, CurrentBuyerVM, loginBuyer, getAllBuyersVM, chan
                             {/*<Link to="/login" className="btn btn-outline-primary">Login</Link>*/}
                             {/*<Link to="/register" className="btn btn-primary">Register</Link>*/}
                         </div>
-                        <div id="dropdown" className="dropdown" onClick={dropdownOpen}>
+                        {/* className="dropdown" onClick={dropdownOpen}*/}
+                        <div id="dropdown">
                             <div id="dropdown-toggle" className="dropdown-toggle">
                                 <FontAwesomeIcon icon={faUserCircle} />
                             </div>
@@ -129,18 +187,18 @@ const Header = ({ CurrentBuyer, CurrentBuyerVM, loginBuyer, getAllBuyersVM, chan
                                         Profile
                                     </Link>
                                 </li>
-                                <li>
-                                    <Link to="/user/settings">
-                                        <FontAwesomeIcon icon={faCog} />
-                                        Setings
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="#">
-                                        <FontAwesomeIcon icon={faSignOutAlt} />
-                                        logout
-                                    </Link>
-                                </li>
+                                {/*<li>*/}
+                                {/*    <Link to="/user/settings">*/}
+                                {/*        <FontAwesomeIcon icon={faCog} />*/}
+                                {/*        Setings*/}
+                                {/*    </Link>*/}
+                                {/*</li>*/}
+                                {/*<li>*/}
+                                {/*    <Link to="#">*/}
+                                {/*        <FontAwesomeIcon icon={faSignOutAlt} />*/}
+                                {/*        logout*/}
+                                {/*    </Link>*/}
+                                {/*</li>*/}
                             </ul>
                         </div>
                     </div>
@@ -150,15 +208,18 @@ const Header = ({ CurrentBuyer, CurrentBuyerVM, loginBuyer, getAllBuyersVM, chan
     )
 }
 
-const mapStateToProps = ({  BuyerListReducer }) => {
+const mapStateToProps = ({ BuyerListReducer, GameListReducer }) => {
+    const { GameList, GameListVM} = GameListReducer;
     const { CurrentBuyer, CurrentBuyerVM, BuyersListVM } = BuyerListReducer;
-    return { CurrentBuyer, CurrentBuyerVM, BuyersListVM }
+    return { CurrentBuyer, CurrentBuyerVM, BuyersListVM, GameList, GameListVM }
 }
 
 const mapDispatchToProps = {
     loginBuyer,
     getAllBuyersVM,
-    changeCurrentBuyerVM
+    changeCurrentBuyerVM,
+    getAllGames,
+    getAllGamesVM
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

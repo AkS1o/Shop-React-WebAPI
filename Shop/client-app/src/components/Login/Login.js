@@ -10,10 +10,19 @@ import React from "react";
 
 import APIService from "../../services/APIService";
 import { loginBuyer } from "../../actions/BuyerListAction";
+import { changeCurrentBuyerVM } from "../../actions/BuyerListAction";
 
 import { Formik } from "formik";
 
-const Login = ({ loginBuyer }) => {
+const Login = ({ loginBuyer, changeCurrentBuyerVM}) => {
+
+
+
+    //useEffect(() => {
+    //    apiService.fetchBuyerListVM().then(data => {
+    //        getAllBuyersVM(data.List);
+    //    })
+    //}, []);
 
     const initialValues = {
         email: "",
@@ -21,7 +30,7 @@ const Login = ({ loginBuyer }) => {
     };
 
     const history = useHistory();
-  
+
     const validate = (values) => {
         let errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -55,9 +64,22 @@ const Login = ({ loginBuyer }) => {
         //tmplist.push(newBuyer);
 
 
-        
+
         APIService.loginBuyer(newBuyer);
         loginBuyer(newBuyer);
+
+
+        const newBuyerVM = {
+            /*Id: uuid(),*/
+            Name: "",
+            Surname: "",
+            NickName: "",
+            Password: values.password,
+            Email: values.email,
+            GamesIds: []
+        }
+
+        changeCurrentBuyerVM(newBuyerVM);
 
         history.push("/")
     };
@@ -130,12 +152,13 @@ const Login = ({ loginBuyer }) => {
 }
 
 const mapStateToProps = ({ BuyerListReducer }) => {
-    //const { BuyerList } = BuyerListReducer;
-    //return { BuyerList }
+    const { CurrentBuyerVM } = BuyerListReducer;
+    return { CurrentBuyerVM }
 }
 
 const mapDispatchToProps = {
-    loginBuyer
+    loginBuyer,
+    changeCurrentBuyerVM
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

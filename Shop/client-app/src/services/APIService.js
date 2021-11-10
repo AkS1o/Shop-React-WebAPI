@@ -296,6 +296,20 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
+    async logOutBuyer() {
+        await fetch(`${this.apiAuth}logout`,
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify()
+            })
+            .then(res => console.log(res))
+            .catch(res => console.log(res))
+    }
+
     async deleteBuyer(Id) {
         await fetch(`${this.apiBuyers}delete-buyer/${Id}`,
             {

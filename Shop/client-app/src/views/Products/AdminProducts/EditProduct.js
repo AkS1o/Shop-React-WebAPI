@@ -25,6 +25,7 @@ class EditProduct extends Component {
         Publisher: this.props.CurrentGame.Publisher,
         Description: this.props.CurrentGame.Description,
         Image: this.props.CurrentGame.Image,
+        IntroImage: this.props.CurrentGame.IntroImage,
         ReleaseDate: this.props.CurrentGame.ReleaseDate,
 
         Min_OS: this.props.CurrentGame.Min_OS,
@@ -103,6 +104,13 @@ class EditProduct extends Component {
         const image = e.target.files[0].name;
         this.setState({
             Image: image
+        })
+    }
+
+    onGetIntroImage = (e) => {
+        const introimage = e.target.files[0].name;
+        this.setState({
+            IntroImage: introimage
         })
     }
 
@@ -231,7 +239,7 @@ class EditProduct extends Component {
 
     UpdateGame = (e) => {
         e.preventDefault();
-        const { Id_Game, Name, Quantity, Developer, Price, Description, Rating, Publisher, Image, ReleaseDate, Min_OS, Min_Processor,
+        const { Id_Game, Name, Quantity, Developer, Price, Description, Rating, Publisher, Image, IntroImage, ReleaseDate, Min_OS, Min_Processor,
             Min_Memory, Min_Storage, Min_DirectX, Min_Graphics, Rec_OS, Rec_Processor, Rec_Memory, Rec_Storage, Rec_DirectX, Rec_Graphics,
             GenreIds, PlatformIds, /*CurrentGameVM*/ CurrentPlatformId, CurrentGenreId, CurrentPlatformName, CurrentGenreName } = this.state;
         const newGame = {
@@ -243,6 +251,7 @@ class EditProduct extends Component {
             Description,
             Publisher,
             Image,
+            IntroImage,
             ReleaseDate,
             Min_OS,
             Min_Processor,
@@ -364,7 +373,7 @@ class EditProduct extends Component {
     }
 
     render() {
-        const { Id_Game, Name, Quantity, Developer, Price, Description, Rating, Publisher, Image, ReleaseDate, Min_OS, Min_Processor,
+        const { Id_Game, Name, Quantity, Developer, Price, Description, Rating, Publisher, Image, IntroImage, ReleaseDate, Min_OS, Min_Processor,
             Min_Memory, Min_Storage, Min_DirectX, Min_Graphics, Rec_OS, Rec_Processor, Rec_Memory, Rec_Storage, Rec_DirectX, Rec_Graphics,
             GenreIds, PlatformIds, /*CurrentGameVM*/ CurrentPlatformId, CurrentGenreId, CurrentPlatformName, CurrentGenreName } = this.state;
         let { isRedirect } = this.state;
@@ -373,6 +382,8 @@ class EditProduct extends Component {
         }
 
         var imgPath = "../img/game/" + Image;
+
+        var imgPath2 = "../img/intro/" + IntroImage;
 
         return (
             <Fragment>
@@ -447,19 +458,14 @@ class EditProduct extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-6">
+                        <div className="col-4">
                             <div className="card">
                                 <div className="card-body">
                                     <div class="form-group">
-                                        <label>Description</label>
-                                        <Editor
-                                            editorState={this.state.editorState}
-                                            wrapperClassName="style-wrapper"
-                                            toolbarClassName="style-toolbar"
-                                            editorClassName="style-editor"
-                                            onEditorStateChange={this.onEditorStateChange}
-                                        />
+                                        <label>Intro Image</label>
+                                        <input type="file" name="files" id="upload" multiple onChange={this.onGetIntroImage} />
                                     </div>
+                                    <img src={imgPath2} alt="img" className="img-fluid" />
                                 </div>
                             </div>
                         </div>

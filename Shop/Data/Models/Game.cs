@@ -18,6 +18,7 @@ namespace Shop.Data.Models
         public string Publisher { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
+        public string IntroImage { get; set; }
         public DateTime ReleaseDate { get; set; }
 
 

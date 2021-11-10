@@ -32,6 +32,7 @@ namespace Shop.Data.Services
                 Developer = game.Developer,
                 Publisher = game.Publisher,
                 Image = game.Image,
+                IntroImage = game.IntroImage,
                 ReleaseDate = game.ReleaseDate,
                 Min_OS = game.Min_OS,
                 Min_Processor = game.Min_Processor,
@@ -102,6 +103,7 @@ namespace Shop.Data.Services
                 _game.Publisher = game.Publisher;
                 _game.Description = game.Description;
                 _game.Image = game.Image;
+                _game.IntroImage = game.IntroImage;
                 _game.ReleaseDate = game.ReleaseDate;
                 _game.Min_OS = game.Min_OS;
                 _game.Min_Processor = game.Min_Processor;
@@ -250,6 +252,7 @@ namespace Shop.Data.Services
                 gameVM.Developer = item.Developer;
                 gameVM.Publisher = item.Publisher;
                 gameVM.Image = item.Image;
+                gameVM.IntroImage = item.IntroImage;
                 gameVM.ReleaseDate = item.ReleaseDate;
                 gameVM.Min_OS = item.Min_OS;
                 gameVM.Min_Processor = item.Min_Processor;

@@ -11,6 +11,7 @@ import React from 'react';
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 
+
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 
@@ -24,6 +25,7 @@ class AddProduct extends Component {
         Publisher: "",
         Description: "",
         Image: "",
+        IntroImage: "",
         ReleaseDate: "",
 
         Min_OS: "",
@@ -98,6 +100,13 @@ class AddProduct extends Component {
         const image = e.target.files[0].name;
         this.setState({
             Image: image
+        })
+    }
+
+    onGetIntroImage = (e) => {
+        const introimage = e.target.files[0].name;
+        this.setState({
+            IntroImage: introimage
         })
     }
 
@@ -226,7 +235,7 @@ class AddProduct extends Component {
 
     CreateGame = (e) => {
         e.preventDefault();
-        const { Name, Quantity, Developer, Price, Description, Rating, Publisher, Image, ReleaseDate, Min_OS, Min_Processor,
+        const { Name, Quantity, Developer, Price, Description, Rating, Publisher, Image, IntroImage, ReleaseDate, Min_OS, Min_Processor,
             Min_Memory, Min_Storage, Min_DirectX, Min_Graphics, Rec_OS, Rec_Processor, Rec_Memory, Rec_Storage, Rec_DirectX, Rec_Graphics,
             GenreIds, PlatformIds } = this.state;
         const newGame = {
@@ -238,6 +247,7 @@ class AddProduct extends Component {
             Description,
             Publisher,
             Image,
+            IntroImage,
             ReleaseDate,
             Min_OS,
             Min_Processor,
@@ -302,6 +312,8 @@ class AddProduct extends Component {
         }
 
         var imgPath = "../img/game/" + Image;
+
+        var imgPath2 = "../img/intro/" + Image;
 
         return (
             <Fragment>
@@ -375,19 +387,14 @@ class AddProduct extends Component {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-6">
+                        <div className="col-4">
                             <div className="card">
                                 <div className="card-body">
                                     <div class="form-group">
-                                        <label>Description</label>
-                                        <Editor
-                                            editorState={this.state.editorState}
-                                            wrapperClassName="style-wrapper"
-                                            toolbarClassName="style-toolbar"
-                                            editorClassName="style-editor"
-                                            onEditorStateChange={this.onEditorStateChange}
-                                        />
+                                        <label>Intro Image</label>
+                                        <input type="file" name="files" id="upload" multiple onChange={this.onGetIntroImage} />
                                     </div>
+                                    <img src={imgPath2} alt="img" className="img-fluid" />
                                 </div>
                             </div>
                         </div>
