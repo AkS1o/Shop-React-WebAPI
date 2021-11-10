@@ -41,12 +41,12 @@ const Transactions = ({ CurrentBuyerVM, GameListVM }) => {
             <section>
                 <div className="card">
                     <div className="card-body">
-                        <h2 className="title-line">Change Your Password</h2>
+                        <h2 className="title-line">Your transactions</h2>
                         <table className="table">
                             <thead>
                                 <tr>
                                     <th>Date</th>
-                                    <th>Description</th>
+                                    <th>Name</th>
                                     <th>Price</th>
                                 </tr>
                             </thead>
