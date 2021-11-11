@@ -95,5 +95,13 @@ namespace Shop.Controllers
             });
         }
 
+
+        [HttpPut("update-buyer")]
+        public IActionResult СhangeNews([FromBody] Buyer buyer)
+        {
+            var updatenews = _authService.СhangeBuyer(buyer);
+            return Ok(updatenews);
+        }
+
     }
 }

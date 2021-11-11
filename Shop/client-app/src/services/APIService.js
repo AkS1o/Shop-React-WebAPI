@@ -8,9 +8,9 @@ class APIService extends Component {
     apiBuyers = "/api/Buyers/"
     apiAuth = "/api/Auth/"
 
-    async fetchContactList() {
+    fetchContactList() {
         console.log("apiGames", this.apiGames + "get-games")
-        const List = await fetch(this.apiGames + "get-games")
+        const List = fetch(this.apiGames + "get-games")
             .then(response => {
                 return response.json();
             })
@@ -24,9 +24,9 @@ class APIService extends Component {
         return List;
     }
 
-    async fetchGame_vm_List() {
+    fetchGame_vm_List() {
         console.log("apiGames", this.apiGames + "get-gamesVM")
-        const List = await fetch(this.apiGames + "get-gamesVM")
+        const List = fetch(this.apiGames + "get-gamesVM")
             .then(response => {
                 return response.json();
             })
@@ -40,8 +40,8 @@ class APIService extends Component {
         return List;
     }
 
-    async addGame(Game) {
-        await fetch(`${this.apiGames}add-game`,
+    addGame(Game) {
+        fetch(`${this.apiGames}add-game`,
             {
                 headers: {
                     'Accept': 'application/json',
@@ -54,8 +54,8 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async deleteGame(Id) {
-        await fetch(`${this.apiGames}delete-game/${Id}`,
+    deleteGame(Id) {
+        fetch(`${this.apiGames}delete-game/${Id}`,
             {
                 headers: {
                     'Content-Type': 'application/json'
@@ -67,8 +67,8 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async updateGame(Game) {
-        await fetch(`${this.apiGames}update-game`,
+    updateGame(Game) {
+        fetch(`${this.apiGames}update-game`,
             {
                 headers: {
                     'Content-Type': 'application/json'
@@ -80,9 +80,9 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async fetchGenreList() {
+    fetchGenreList() {
         console.log("apiGenres", this.apiGenres + "get-genres")
-        const List = await fetch(this.apiGenres + "get-genres")
+        const List = fetch(this.apiGenres + "get-genres")
             .then(response => {
                 return response.json();
             })
@@ -96,8 +96,8 @@ class APIService extends Component {
         return List;
     }
 
-    async addGenre(Genre) {
-        await fetch(`${this.apiGenres}add-genres`,
+    addGenre(Genre) {
+        fetch(`${this.apiGenres}add-genres`,
             {
                 headers: {
                     'Accept': 'application/json',
@@ -110,8 +110,8 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async deleteGenre(Id) {
-        await fetch(`${this.apiGenres}delete-genre/${Id}`,
+    deleteGenre(Id) {
+        fetch(`${this.apiGenres}delete-genre/${Id}`,
             {
                 headers: {
                     'Content-Type': 'application/json'
@@ -123,9 +123,9 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async fetchPlatformList() {
+    fetchPlatformList() {
         console.log("apiPlatforms", this.apiPlatforms + "get-genres")
-        const List = await fetch(this.apiPlatforms + "get-platforms")
+        const List = fetch(this.apiPlatforms + "get-platforms")
             .then(response => {
                 return response.json();
             })
@@ -139,8 +139,8 @@ class APIService extends Component {
         return List;
     }
 
-    async addPlatform(Platform) {
-        await fetch(`${this.apiPlatforms}add-platforms`,
+    addPlatform(Platform) {
+        fetch(`${this.apiPlatforms}add-platforms`,
             {
                 headers: {
                     'Accept': 'application/json',
@@ -153,8 +153,8 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async deletePlatform(Id) {
-        await fetch(`${this.apiPlatforms}delete-platform/${Id}`,
+    deletePlatform(Id) {
+        fetch(`${this.apiPlatforms}delete-platform/${Id}`,
             {
                 headers: {
                     'Content-Type': 'application/json'
@@ -166,8 +166,8 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async fetchNewsList() {
-        const List = await fetch(this.apiNews + "get-news")
+    fetchNewsList() {
+        const List = fetch(this.apiNews + "get-news")
             .then(response => {
                 return response.json();
             })
@@ -181,8 +181,8 @@ class APIService extends Component {
         return List;
     }
 
-    async addNews(News) {
-        await fetch(`${this.apiNews}add-news`,
+    addNews(News) {
+        fetch(`${this.apiNews}add-news`,
             {
                 headers: {
                     'Accept': 'application/json',
@@ -195,8 +195,8 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async deleteNews(Id) {
-        await fetch(`${this.apiNews}delete-news/${Id}`,
+    deleteNews(Id) {
+        fetch(`${this.apiNews}delete-news/${Id}`,
             {
                 headers: {
                     'Content-Type': 'application/json'
@@ -208,8 +208,8 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async updateNews(News) {
-        await fetch(`${this.apiNews}update-news`,
+    updateNews(News) {
+        fetch(`${this.apiNews}update-news`,
             {
                 headers: {
                     'Content-Type': 'application/json'
@@ -223,8 +223,8 @@ class APIService extends Component {
 
 
 
-    async fetchBuyerList() {
-        const List = await fetch(this.apiBuyers + "get-buyers")
+    fetchBuyerList() {
+        const List = fetch(this.apiBuyers + "get-buyers")
             .then(response => {
                 return response.json();
             })
@@ -238,8 +238,8 @@ class APIService extends Component {
         return List;
     }
 
-    async fetchBuyerListVM() {
-        const List = await fetch(this.apiBuyers + "get-buyersVM")
+    fetchBuyerListVM() {
+        const List = fetch(this.apiBuyers + "get-buyersVM")
             .then(response => {
                 return response.json();
             })
@@ -253,8 +253,8 @@ class APIService extends Component {
         return List;
     }
 
-    async fetchCurentBuyer() {
-        const Buyer = await fetch(this.apiAuth + "user")
+    fetchCurentBuyer() {
+        const Buyer = fetch(this.apiAuth + "user")
             .then(response => {
                 return response.json();
             })
@@ -268,8 +268,8 @@ class APIService extends Component {
         return Buyer;
     }
 
-    async addBuyer(Buyer) {
-        await fetch(`${this.apiAuth}register`,
+    addBuyer(Buyer) {
+        fetch(`${this.apiAuth}register`,
             {
                 headers: {
                     'Accept': 'application/json',
@@ -282,8 +282,8 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async loginBuyer(Buyer) {
-        await fetch(`${this.apiAuth}login`,
+    loginBuyer(Buyer) {
+        fetch(`${this.apiAuth}login`,
             {
                 headers: {
                     'Accept': 'application/json',
@@ -296,8 +296,8 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async logOutBuyer() {
-        await fetch(`${this.apiAuth}logout`,
+    logOutBuyer() {
+        fetch(`${this.apiAuth}logout`,
             {
                 headers: {
                     'Accept': 'application/json',
@@ -310,8 +310,8 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async deleteBuyer(Id) {
-        await fetch(`${this.apiBuyers}delete-buyer/${Id}`,
+    deleteBuyer(Id) {
+        fetch(`${this.apiBuyers}delete-buyer/${Id}`,
             {
                 headers: {
                     'Content-Type': 'application/json'
@@ -323,8 +323,8 @@ class APIService extends Component {
             .catch(res => console.log(res))
     }
 
-    async updateBuyer(Buyer) {
-        await fetch(`${this.apiBuyers}update-news`,
+    updateBuyer(Buyer) {
+        fetch(`${this.apiAuth}update-buyer`,
             {
                 headers: {
                     'Content-Type': 'application/json'

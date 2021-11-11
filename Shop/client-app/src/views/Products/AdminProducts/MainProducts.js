@@ -12,9 +12,14 @@ import Pagination from "../../../components/Pagination/Pagination";
 import TableProducts from "../../../components/Table/TableProducts/TableProducts";
 
 
-const MainProduct = ({ GameList, getAllGames, GameListVm, getAllGamesVM }) => {
+const MainProduct = ({ GameList, getAllGames, GameListVm, getAllGamesVM, CurrentBuyerVM, CurrentBuyer }) => {
 
     useEffect(() => {
+
+        console.log("CurrentBuyerVM from main product", CurrentBuyerVM);
+        console.log("CurrentBuyer from main product", CurrentBuyer);
+
+
         apiService.fetchContactList().then(data => {
             
             getAllGames(data.List);
@@ -36,7 +41,8 @@ const MainProduct = ({ GameList, getAllGames, GameListVm, getAllGamesVM }) => {
     });
     return (
         <Fragment>
-            <Link to="/admin/add-product" className="btn btn-white">Add Contact</Link>
+            <section>
+            <Link to="/user/add-product" className="btn btn-white">Add Contact</Link>
             <table className="table">
                 <thead>
                     <tr>
@@ -58,15 +64,17 @@ const MainProduct = ({ GameList, getAllGames, GameListVm, getAllGamesVM }) => {
             <div className="d-flex align-items-center justify-content-between">
                 <div>Showing products 1 to 5 of 12</div>
                 <Pagination />
-            </div>
+                </div>
+            </section>
         </Fragment >
     )
 }
 
-const mapStateToProps = ({ GameListReducer }) => {
+const mapStateToProps = ({ GameListReducer, BuyerListReducer }) => {
     const { GameList } = GameListReducer;
     const { GameListVm } = GameListReducer;
-    return { GameList, GameListVm }
+    const { CurrentBuyerVM, CurrentBuyer } = BuyerListReducer;
+    return { GameList, GameListVm, CurrentBuyerVM, CurrentBuyer }
 }
 
 const mapDispatchToProps = {

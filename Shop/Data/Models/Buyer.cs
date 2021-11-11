@@ -19,7 +19,7 @@ namespace Shop.Data.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public string Image { get; set; }
-
+        public bool ?isAdmin { get; set; }
         public virtual ICollection<Game> Games { get; set; }
     }
 }

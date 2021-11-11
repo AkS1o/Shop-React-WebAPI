@@ -35,13 +35,13 @@ const TableNews = ({ Id, Name, Publisher, ShortDescription, Image, ReleaseDate, 
                 <td>{ReleaseDate}</td>
                 <td>Active</td>
                 <td className="table-action">
-                    <Link to="/admin/views-news" onClick={onGetCurrentNews}>
+                    <Link to="/user/views-news" onClick={onGetCurrentNews}>
                         <FontAwesomeIcon icon={faEye} />
                     </Link>
-                    <Link onClick={onGetCurrentNews} to="/admin/edit-news">
+                    <Link onClick={onGetCurrentNews} to="/user/edit-news">
                         <FontAwesomeIcon icon={faEdit} />
                     </Link>
-                    <Link onClick={onDeleteNews} to="/admin/news">
+                    <Link onClick={onDeleteNews} to="/user/news">
                         <FontAwesomeIcon icon={faTrash} />
                     </Link>
                     <FontAwesomeIcon icon={faImages} />

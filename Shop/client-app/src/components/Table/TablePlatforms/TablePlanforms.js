@@ -32,7 +32,7 @@ const TablePlatforms = ({ Id, Name, PlatformList, deletePlatform, getCurrentPlat
                 <td>{Name}</td>
                 <td>Active</td>
                 <td className="table-action">
-                    <Link onClick={onDeletePlatform} to="/admin/platforms">
+                    <Link onClick={onDeletePlatform} to="/user/platforms">
                         <FontAwesomeIcon icon={faTrash} />
                     </Link>
                     <FontAwesomeIcon icon={faImages} />

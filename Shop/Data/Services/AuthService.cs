@@ -15,7 +15,7 @@ namespace Shop.Data.Services
         public AuthService(AppDbContext context, JwtService jwtService)
         {
             _context = context;
-           _jwtService = jwtService;
+            _jwtService = jwtService;
         }
 
         public IEnumerable<Buyer> GetBuyers()
@@ -25,7 +25,7 @@ namespace Shop.Data.Services
         }
 
         public void Register(Buyer buyer)
-        {     
+        {
             var _buyer = new Buyer()
             {
                 Nickname = buyer.Nickname,
@@ -34,10 +34,31 @@ namespace Shop.Data.Services
                 Password = BCrypt.Net.BCrypt.HashPassword(buyer.Password),
                 Email = buyer.Email,
                 Image = buyer.Image,
+                isAdmin = false
             };
 
             _context.Buyers.Add(_buyer);
             _context.SaveChanges();
+        }
+
+
+
+        public Buyer СhangeBuyer(Buyer buyer)
+        {
+            var _buyer = _context.Buyers.FirstOrDefault(n => n.Id == buyer.Id);
+
+
+            if (_buyer != null)
+            {
+                _buyer.Name = buyer.Name;
+                _buyer.Surname = buyer.Surname;
+                _buyer.Nickname = buyer.Nickname;
+                _buyer.Email = buyer.Email;
+
+                _context.SaveChanges();
+            }
+
+            return _buyer;
         }
     }
 }

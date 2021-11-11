@@ -53,7 +53,7 @@ class AddPlatform extends Component {
     render() {
         let { isRedirect } = this.state;
         if (isRedirect === true) {
-            return <Redirect to="/admin" />
+            return <Redirect to="/user/news" />
         }
         return (
             <Fragment>
@@ -76,7 +76,7 @@ class AddPlatform extends Component {
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <Link to="/admin/platforms" class="btn btn-outline-white mx-2">Back</Link>
+                        <Link to="/user/platforms" class="btn btn-outline-white mx-2">Back</Link>
                         <input type="submit" class="btn btn-primary mx-2" value="Create" />
                     </div>
                 </form>

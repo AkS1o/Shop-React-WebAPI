@@ -104,7 +104,7 @@ class EditNews extends Component {
         let { Name, Publisher, Description, ShortDescription, Image, ReleaseDate } = this.state;
         let { isRedirect } = this.state;
         if (isRedirect === true) {
-            return <Redirect to="/admin" />
+            return <Redirect to="/user/news" />
         }
 
         var imgPath = "../img/news/" + Image;
@@ -118,7 +118,7 @@ class EditNews extends Component {
                                 <div className="card-body">
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input type="file" name="files" id="upload" defaultValue={Image} onChange={this.onGetImage} multiple />
+                                        <input type="file" name="filesNews" id="uploadNews" multiple  onChange={this.onGetImage} />
                                     </div>
                                     <img src={imgPath} alt="img" className="img-fluid" />
                                 </div>
@@ -159,7 +159,7 @@ class EditNews extends Component {
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <Link to="/admin/news" class="btn btn-outline-white mx-2">Back</Link>
+                        <Link to="/user/news" class="btn btn-outline-white mx-2">Back</Link>
                         <input type="submit" class="btn btn-primary mx-2" value="Edit" />
                     </div>
                 </form>

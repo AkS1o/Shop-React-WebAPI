@@ -2,14 +2,29 @@ import { Fragment } from "react";
 import { connect } from "react-redux"
 import { useEffect } from "react";
 
+import { loginBuyer, changeCurrentBuyerVM } from "../../../actions/BuyerListAction"
+import { getAllGenres } from "../../../actions/GenreListAction"
+import apiService from "../../../services/APIService";
+
 //import components
 import TableTransactions from "../../../components/Table/TableTransactions/TableTransactions";
+import { Link } from "react-router-dom";
 
-const Transactions = ({ CurrentBuyerVM, GameListVM }) => {
+const Transactions = ({ CurrentBuyerVM, GameListVM, loginBuyer, getAllGenres, changeCurrentBuyerVM }) => {
 
     useEffect(() => {
-        let tbody = document.getElementById("tbd");
 
+        apiService.fetchGenreList().then(data => {
+            getAllGenres(data.List);
+        });
+
+        apiService.fetchCurentBuyer().then(data => {
+            loginBuyer(data.Buyer);
+        })
+
+        let tbody = document.getElementById("tbd");
+        let button = document.getElementById("button_of_price");
+        let price = 0;
         CurrentBuyerVM.GamesIds.forEach((item) => {
             GameListVM.forEach((item2) => {
                 if (item == item2.Id_Game) {
@@ -22,6 +37,8 @@ const Transactions = ({ CurrentBuyerVM, GameListVM }) => {
                     td2.innerHTML = item2.Name;
                     td3.innerHTML = item2.Price;
 
+                    price += item2.Price;
+
                     tr.appendChild(td1);
                     tr.appendChild(td2);
                     tr.appendChild(td3);
@@ -30,10 +47,14 @@ const Transactions = ({ CurrentBuyerVM, GameListVM }) => {
                 }
             })
         })
+        button.innerHTML = price + "$\nBUY";
+
     }, []);
 
-    const ShowBuyerGames = () => {
-        
+    const BuyGames = () => {
+        let NewCurrentBuyerVM = CurrentBuyerVM;
+        NewCurrentBuyerVM.GamesIds = [];
+        changeCurrentBuyerVM(NewCurrentBuyerVM);
     }
 
     return (
@@ -56,6 +77,9 @@ const Transactions = ({ CurrentBuyerVM, GameListVM }) => {
                                 {/*<TableTransactions />*/}
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            <Link className="btn btn-primary" id="button_of_price" onClick={BuyGames} to="/user/"></Link>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -70,6 +94,9 @@ const mapStateToProps = ({ BuyerListReducer, GameListReducer }) => {
 }
 
 const mapDispatchToProps = {
+    loginBuyer,
+    getAllGenres,
+    changeCurrentBuyerVM
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Transactions);

@@ -59,6 +59,7 @@ const Login = ({ loginBuyer, changeCurrentBuyerVM}) => {
             NickName: "",
             Password: values.password,
             Email: values.email
+
         }
         //let tmplist = this.props.BuyerList.slice();
         //tmplist.push(newBuyer);
@@ -76,7 +77,7 @@ const Login = ({ loginBuyer, changeCurrentBuyerVM}) => {
             NickName: "",
             Password: values.password,
             Email: values.email,
-            GamesIds: []
+            GamesIds: [],
         }
 
         changeCurrentBuyerVM(newBuyerVM);

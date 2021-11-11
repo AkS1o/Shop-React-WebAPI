@@ -100,7 +100,7 @@ class AddNews extends Component {
     render() {
         let { isRedirect } = this.state;
         if (isRedirect === true) {
-            return <Redirect to="/admin" />
+            return <Redirect to="/user/news" />
         }
 
         var imgPath = "../img/news/" + Image;
@@ -174,7 +174,7 @@ class AddNews extends Component {
                         {/*</div>*/}
                     </div>
                     <div class="d-flex justify-content-center">
-                        <Link to="/admin/news" class="btn btn-outline-white mx-2">Back</Link>
+                        <Link to="/user/news" class="btn btn-outline-white mx-2">Back</Link>
                         <input type="submit" class="btn btn-primary mx-2" value="Create" />
                     </div>
                 </form>

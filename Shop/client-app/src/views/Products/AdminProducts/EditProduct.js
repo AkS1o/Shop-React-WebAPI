@@ -343,33 +343,6 @@ class EditProduct extends Component {
             }
         })
 
-        //if (this.props.CurrentGameVM.GenreIds != null) {
-        //    let choose_genre_option = document.getElementById("choose_platform_option");
-        //    let tmplist3 = this.props.GenreList.slice();
-        //    if (tmplist3 != null) {
-        //        tmplist3.forEach((item) => {
-        //            if (this.props.CurrentGameVM.GenreIds[0] == item.Id)
-
-        //            choose_genre_option.setAttribute("value", item.Name)
-        //            choose_genre_option.innerHTML = item.Name;
-        //            this.props.CurrentGenre = item.Name;
-        //        })
-        //    }
-        //}
-
-        //if (this.props.CurrentGameVM.PlatformIds != null) {
-        //    let choose_platform_option = document.getElementById("choose_genre_option");
-        //    let tmplist4 = this.props.PlatformList.slice();
-        //    if (tmplist4 != null) {
-        //        tmplist4.forEach((item) => {
-        //            if (this.props.CurrentGameVM.PlatformIds[0] == item.Id)
-
-        //            choose_platform_option.setAttribute("value", item.Name)
-        //            choose_platform_option.innerHTML = item.Name;
-        //            this.props.CurrentPlatform = item.Name;
-        //        })
-        //    }
-        //}
     }
 
     render() {
@@ -378,7 +351,7 @@ class EditProduct extends Component {
             GenreIds, PlatformIds, /*CurrentGameVM*/ CurrentPlatformId, CurrentGenreId, CurrentPlatformName, CurrentGenreName } = this.state;
         let { isRedirect } = this.state;
         if (isRedirect === true) {
-            return <Redirect to="/admin" />
+            return <Redirect to="/user/products" />
         }
 
         var imgPath = "../img/game/" + Image;
@@ -534,8 +507,8 @@ class EditProduct extends Component {
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <Link to="/admin/products" class="btn btn-outline-white mx-2">Back</Link>
-                        <input type="submit" class="btn btn-primary mx-2" value="Create" />
+                        <Link to="/user/products" class="btn btn-outline-white mx-2">Back</Link>
+                        <input type="submit" class="btn btn-primary mx-2" value="Update" />
                     </div>
                 </form>
             </Fragment >

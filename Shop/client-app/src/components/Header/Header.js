@@ -24,6 +24,10 @@ const Header = ({ getAllGames, getAllGamesVM, CurrentBuyer, CurrentBuyerVM, logi
         console.log("currentBuyerHeader", CurrentBuyer)
         console.log("currentBuyerVVMMHeader", CurrentBuyerVM)
 
+        apiService.fetchCurentBuyer().then(data => {
+            loginBuyer(data.Buyer);
+        })
+
         apiService.fetchContactList().then(data => {
             getAllGames(data.List);
         })
@@ -32,11 +36,9 @@ const Header = ({ getAllGames, getAllGamesVM, CurrentBuyer, CurrentBuyerVM, logi
             getAllGamesVM(data.List);
         })
 
-        apiService.fetchCurentBuyer().then(data => {
-            loginBuyer(data.Buyer);
-        })
+        
 
-        if (CurrentBuyerVM == null || CurrentBuyerVM == undefined) {
+        if (/*CurrentBuyerVM == null || CurrentBuyerVM == undefined ||*/CurrentBuyer == null || CurrentBuyer.title == "Unauthorized") {
             console.log("current buyer", CurrentBuyer)
             let elem = document.getElementById("login_regist");
             let link1 = document.createElement("a")
@@ -57,6 +59,10 @@ const Header = ({ getAllGames, getAllGamesVM, CurrentBuyer, CurrentBuyerVM, logi
                 
         }
         else /*if (CurrentBuyer != null && CurrentBuyer != undefined)*/ {
+            apiService.fetchBuyerListVM().then(data => {
+                getAllBuyersVM(data.List);
+            })
+
             console.log("current buyer", CurrentBuyer)
 
             let elem = document.getElementById("login_regist");
@@ -75,14 +81,12 @@ const Header = ({ getAllGames, getAllGamesVM, CurrentBuyer, CurrentBuyerVM, logi
             elem.appendChild(btn);
 
 
-            apiService.fetchBuyerListVM().then(data => {
-                getAllBuyersVM(data.List);
-            })
 
 
             if (CurrentBuyerVM == null || CurrentBuyerVM == undefined) {
                 BuyersListVM.forEach((item) => {
                     if (item.Email == CurrentBuyer.Email) {
+                        console.log("item",item);
                         changeCurrentBuyerVM(item);
                     }
                 })
@@ -96,9 +100,9 @@ const Header = ({ getAllGames, getAllGamesVM, CurrentBuyer, CurrentBuyerVM, logi
             prof.setAttribute("onClick", dropdownOpen);
             prof.onclick = function () { dropdownOpen() }
 
-            console.log("getAllBuyersVM", BuyersListVM);
-
-            console.log("currentBuyerVM", CurrentBuyerVM);
+            console.log("getAllBuyersVM header", BuyersListVM);
+            console.log("getAllBuyers header", CurrentBuyer);
+            console.log("currentBuyerVM header", CurrentBuyerVM);
         }
 
     }, []);

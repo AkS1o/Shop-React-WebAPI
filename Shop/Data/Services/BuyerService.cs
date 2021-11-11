@@ -37,6 +37,7 @@ namespace Shop.Data.Services
                     Email = item.Email,
                     Password = item.Password,
                     Image = item.Image,
+                    isAdmin = item.isAdmin,
                     GamesIds = new List<int>(),
                 };
                 buyerListVM.Add(buyer);
@@ -55,6 +56,7 @@ namespace Shop.Data.Services
                 Password = buyer.Password,
                 Email = buyer.Email,
                 Image = buyer.Image,
+                isAdmin = buyer.isAdmin,
             };
 
             _context.Buyers.Add(_buyer);

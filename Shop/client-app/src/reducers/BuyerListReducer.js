@@ -47,7 +47,7 @@ const BuyerListReducer = (state = initialState, action) => {
         case "BUYER_UPDATE":
             return {
                 ...state,
-                BuyersList: action.payload
+                CurrentBuyer: action.payload
             }
         default:
             return state;

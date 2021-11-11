@@ -28,7 +28,8 @@ const MainNews = ({ NewsList, getAllNews }) => {
     });
     return (
         <Fragment>
-            <Link to="/admin/add-news" className="btn btn-white">Add News</Link>
+            <section>
+            <Link to="/user/add-news" className="btn btn-white">Add News</Link>
             <table className="table">
                 <thead>
                     <tr>
@@ -48,7 +49,8 @@ const MainNews = ({ NewsList, getAllNews }) => {
             <div className="d-flex align-items-center justify-content-between">
                 <div>Showing news 1 to 5 of 12</div>
                 <Pagination />
-            </div>
+                </div>
+            </section>
         </Fragment >
     )
 }

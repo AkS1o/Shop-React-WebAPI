@@ -12,9 +12,13 @@ import Pagination from "../../../src/components/Pagination/Pagination"
 import TableGenres from "../../components/Table/TableGenres/TableGenres";
 
 
-const MainGenre = ({ GenreList, getAllGenres }) => {
+const MainGenre = ({ GenreList, getAllGenres, CurrentBuyerVM, CurrentBuyer  }) => {
 
     useEffect(() => {
+
+        console.log("CurrentBuyerVM from main genre", CurrentBuyerVM);
+        console.log("CurrentBuyer from main genre", CurrentBuyer);
+
         apiService.fetchGenreList().then(data => {
             getAllGenres(data.List);
             console.log(data);
@@ -29,7 +33,8 @@ const MainGenre = ({ GenreList, getAllGenres }) => {
     });
     return (
         <Fragment>
-            <Link to="/admin/add-genre" className="btn btn-white">Add Genre</Link>
+            <section>
+            <Link to="/user/add-genre" className="btn btn-white">Add Genre</Link>
             <table className="table">
                 <thead>
                     <tr>
@@ -46,14 +51,16 @@ const MainGenre = ({ GenreList, getAllGenres }) => {
             <div className="d-flex align-items-center justify-content-between">
                 <div>Showing genres 1 to 5 of 12</div>
                 <Pagination />
-            </div>
+                </div>
+            </section>
         </Fragment >
     )
 }
 
-const mapStateToProps = ({ GenreListReducer }) => {
+const mapStateToProps = ({ GenreListReducer, BuyerListReducer }) => {
     const { GenreList } = GenreListReducer;
-    return { GenreList }
+    const { CurrentBuyerVM, CurrentBuyer } = BuyerListReducer;
+    return { GenreList, CurrentBuyerVM, CurrentBuyer  }
 }
 
 const mapDispatchToProps = {

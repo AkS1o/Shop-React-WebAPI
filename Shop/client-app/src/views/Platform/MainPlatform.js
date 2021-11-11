@@ -28,7 +28,8 @@ const MainPlatform = ({ PlatformList, getAllPlatforms }) => {
     });
     return (
         <Fragment>
-            <Link to="/admin/add-platform" className="btn btn-white">Add Platform</Link>
+            <section>
+            <Link to="/user/add-platform" className="btn btn-white">Add Platform</Link>
             <table className="table">
                 <thead>
                     <tr>
@@ -45,7 +46,8 @@ const MainPlatform = ({ PlatformList, getAllPlatforms }) => {
             <div className="d-flex align-items-center justify-content-between">
                 <div>Showing platforms 1 to 5 of 12</div>
                 <Pagination />
-            </div>
+                </div>
+                </section>
         </Fragment >
     )
 }
