@@ -9,6 +9,7 @@ import apiService from "../../../services/APIService";
 //import components
 import TableTransactions from "../../../components/Table/TableTransactions/TableTransactions";
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 const Transactions = ({ CurrentBuyerVM, GameListVM, loginBuyer, getAllGenres, changeCurrentBuyerVM }) => {
 
@@ -33,7 +34,7 @@ const Transactions = ({ CurrentBuyerVM, GameListVM, loginBuyer, getAllGenres, ch
                     let td2 = document.createElement("td");
                     let td3 = document.createElement("td");
 
-                    td1.innerHTML = item2.ReleaseDate;
+                    td1.innerHTML = moment(item2.ReleaseDate).format("MMM Do YY");
                     td2.innerHTML = item2.Name;
                     td3.innerHTML = item2.Price;
 

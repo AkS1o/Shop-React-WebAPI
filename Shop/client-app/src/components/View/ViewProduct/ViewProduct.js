@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
+import moment from 'moment';
+
 class DetailsProduct extends Component {
     state = {
         Id: this.props.CurrentGame.Id_Game,//
@@ -86,7 +88,7 @@ class DetailsProduct extends Component {
                                 <li><span>Rating</span>{Rating}</li>
                                 <li><span>Developer</span>{Developer}</li>
                                 <li><span>Platform</span>PS4, Xbox One, PC, Stadia</li>
-                                <li><span>Release Date</span>{ReleaseDate}</li>
+                                <li><span>Release Date</span>{moment(ReleaseDate).format("MMM Do YY")}</li>
                             </ul>
                             <div className="row">
                                 <div className="col-3">

@@ -9,7 +9,6 @@ class APIService extends Component {
     apiAuth = "/api/Auth/"
 
     fetchContactList() {
-        console.log("apiGames", this.apiGames + "get-games")
         const List = fetch(this.apiGames + "get-games")
             .then(response => {
                 return response.json();
@@ -25,7 +24,6 @@ class APIService extends Component {
     }
 
     fetchGame_vm_List() {
-        console.log("apiGames", this.apiGames + "get-gamesVM")
         const List = fetch(this.apiGames + "get-gamesVM")
             .then(response => {
                 return response.json();
@@ -81,7 +79,6 @@ class APIService extends Component {
     }
 
     fetchGenreList() {
-        console.log("apiGenres", this.apiGenres + "get-genres")
         const List = fetch(this.apiGenres + "get-genres")
             .then(response => {
                 return response.json();
@@ -124,7 +121,6 @@ class APIService extends Component {
     }
 
     fetchPlatformList() {
-        console.log("apiPlatforms", this.apiPlatforms + "get-genres")
         const List = fetch(this.apiPlatforms + "get-platforms")
             .then(response => {
                 return response.json();
