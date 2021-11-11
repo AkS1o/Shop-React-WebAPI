@@ -13,7 +13,7 @@ import { updateSearchPlatform } from "../../../actions/GameListAction"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
-const SitebarProducts = ({ GenreList, PlatformList, getAllGenres, getAllPlatforms, updateSearchGenre, updateSearchPlatform }) => {
+const SitebarProducts = ({ GenreList, PlatformList, getAllGenres, getAllPlatforms, updateSearchGenre, updateSearchPlatform, SearchGenre, SearchPlatform }) => {
 
     useEffect(() => {
         apiService.fetchPlatformList().then(data => {
@@ -24,65 +24,72 @@ const SitebarProducts = ({ GenreList, PlatformList, getAllGenres, getAllPlatform
             getAllGenres(data.List);
         });
 
-        
+        //let array = [];
+        //updateSearchGenre(array);
+        //updateSearchPlatform(array)
 
         createsiteBarItem("search_by_genre_form", GenreList);
         createsiteBarItem("search_by_platform_form", PlatformList);
     }, []);
 
-    let onupdateSearchGenre = (/*e,*/ value) => {
-/*        e.preventDefault();*/
-        /*console.log("value", value)*/
-        //let selectElem = document.getElementById(value).value;
-        //const searchString = selectElem;
-        updateSearchGenre(value);
+    let onupdateSearchGenre = (/*e,*/value) => {
+        let a = SearchGenre;
+        if (a.includes(value)) {
+            let a = [];
+            SearchGenre.forEach((item) => {
+                if (item != value) {
+                    a.push(item);
+                }
+            })
+            SearchGenre = a;
+            updateSearchGenre(SearchGenre);
+        //    console.log("genre arr with include elem stae", SearchGenre)
+        }
+        else {
+            let b = [];
+            SearchGenre.forEach((item) => {
+                if (item != value) {
+                    b.push(item);
+                }
+
+            })
+            b.push(value);
+            SearchGenre = b;
+            updateSearchGenre(SearchGenre);
+        //    console.log("genre arr with not include elem stae", SearchGenre)
+        }
     }
 
-    let onupdateSearchPlatform = (/*e,*/ value) => {
-        //e.preventDefault();
-        //let selectElem = document.getElementById(value).value;
-        //const searchString = selectElem;
-        updateSearchPlatform(value);
+    let onupdateSearchPlatform = (/*e,*/value) => {
+
+        let a = SearchPlatform;
+        if (a.includes(value)) {
+            let a = [];
+            SearchPlatform.forEach((item) => {
+                if (item != value) {
+                    a.push(item);
+                }
+            })
+            SearchPlatform = a;
+            updateSearchPlatform(SearchPlatform);
+        //    console.log("platform arr with include elem stae", SearchPlatform)
+        }
+        else {
+            let b = [];
+            SearchPlatform.forEach((item) => {
+                if (item != value) {
+                    b.push(item);
+                }
+                
+            })
+            b.push(value);
+            SearchPlatform = b;
+            updateSearchPlatform(SearchPlatform);
+        //    console.log("platform arr with not include elem stae", SearchPlatform)
+        }
     }
 
-    //let LoadGenresCheckBox = () => {
-    //    let search_by_genre_form = document.getElementById("search_by_genre_form");
-    //    GenreList.forEach((item) => {
-    //        let div1 = document.createElement("div");
-    //        div1.setAttribute("className", "form-check")
-    //        let input1 = document.createElement("input");
-    //        input1.setAttribute("type", "checkbox")
-    //        let label1 = document.createElement("label");
-    //        label1.setAttribute("value", item.Name);
-    //        label1.setAttribute("id", item.Name);
-    //        label1.setAttribute("onClick", onupdateSearchGenre);
-    //        label1.innerHTML = item.Name;
 
-    //        div1.appendChild(input1);
-    //        div1.appendChild(label1);
-    //        search_by_genre_form.appendChild(div1);
-
-    //    })
-    //}
-
-    //let LoadPlatformsCheckBox = () => {
-    //    let search_by_platform_form = document.getElementById("search_by_platform_form");
-    //    PlatformList.forEach((item) => {
-    //        let div1 = document.createElement("div");
-    //        div1.setAttribute("className", "form-check")
-    //        let input1 = document.createElement("input");
-    //        input1.setAttribute("type", "checkbox")
-    //        let label1 = document.createElement("label");
-    //        label1.setAttribute("defaultValue", item.Name);
-    //        label1.setAttribute("text", item.Name);
-    //        label1.innerHTML = item.Name;
-    //        label1.setAttribute("onClick", onupdateSearchPlatform);
-
-    //        div1.appendChild(input1);
-    //        div1.appendChild(label1);
-    //        search_by_platform_form.appendChild(div1);
-    //    })
-    //}
 
     const createsiteBarItem = (elId, arr) => {
         let form = document.getElementById(elId);
@@ -90,29 +97,17 @@ const SitebarProducts = ({ GenreList, PlatformList, getAllGenres, getAllPlatform
         let formGroup = document.createElement('div');
         formGroup.classList.add("form-group");
 
-        //let search = document.createElement('input');
 
-        //let typeText = document.createAttribute('type');
-        //typeText.value = "text";
-
-        //let placeholderSearch = document.createAttribute('placeholder');
-        //placeholderSearch.value = "Search";
-
-        //search.setAttributeNode(typeText);
-        //search.setAttributeNode(placeholderSearch);
-
-        //formGroup.appendChild(search);
 
         form.appendChild(formGroup);
 
-        arr.forEach((item) => 
-        {
+        arr.forEach((item) => {
             let formCheck = document.createElement('div');
             formCheck.classList.add("form-check");
 
             let checkbox = document.createElement('input');
             let typeCheckbox = document.createAttribute('type');
-            typeCheckbox.value = "radio";
+            typeCheckbox.value = "checkbox";
             let typeValue = document.createAttribute('value');
             typeValue.value = item.Name;
             let typeId = document.createAttribute('id');
@@ -134,19 +129,15 @@ const SitebarProducts = ({ GenreList, PlatformList, getAllGenres, getAllPlatform
             checkbox.setAttributeNode(typeId);
 
             if (elId == "search_by_genre_form") {
-                //let typeOnClick = document.createAttribute('onClick');
-                //typeOnClick.value = onupdateSearchGenre(item.Name);
-                //checkbox.setAttributeNode(typeOnClick);
-                checkbox.setAttribute("onClick", 'onupdateSearchGenre(item.Name);');
-                checkbox.onclick = function () { onupdateSearchGenre(item.Name) }
-                /*checkbox.addEventListener('click', onupdateSearchGenre(...Array(1), item.Name), true);*/
+
+                checkbox.setAttribute("onchange", 'onupdateSearchGenre(item.Name);');
+                checkbox.onchange = function () { onupdateSearchGenre(item.Name) }
+
             }
             if (elId == "search_by_platform_form") {
-                //let typeOnClick = document.createAttribute('onClick');
-                //typeOnClick.value = onupdateSearchPlatform(item.Name);
-                //checkbox.setAttributeNode(typeOnClick);
-                checkbox.setAttribute("onClick", 'onupdateSearchPlatform(item.Name);');
-                checkbox.onclick = function () { onupdateSearchPlatform(item.Name) }
+
+                checkbox.setAttribute("onchange", 'onupdateSearchPlatform(item.Name);');
+                checkbox.onchange = function () { onupdateSearchPlatform(item.Name) }
             }
 
 
@@ -160,7 +151,7 @@ const SitebarProducts = ({ GenreList, PlatformList, getAllGenres, getAllPlatform
 
             form.appendChild(formCheck);
         }
-        ) 
+        )
     }
 
     const collapse = (param) => {
@@ -238,10 +229,11 @@ const SitebarProducts = ({ GenreList, PlatformList, getAllGenres, getAllPlatform
     )
 }
 
-const mapStateToProps = ({ GenreListReducer, PlatformListReducer }) => {
-    const { GenreList} = GenreListReducer;
+const mapStateToProps = ({ GenreListReducer, PlatformListReducer, GameListReducer }) => {
+    const { GenreList } = GenreListReducer;
     const { PlatformList } = PlatformListReducer;
-    return { GenreList, PlatformList}
+    const { SearchGenre, SearchPlatform } = GameListReducer
+    return { GenreList, PlatformList, SearchGenre, SearchPlatform }
 }
 
 const mapDispatchToProps = {

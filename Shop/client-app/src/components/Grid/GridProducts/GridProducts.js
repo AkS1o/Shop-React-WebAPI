@@ -56,72 +56,152 @@ const GridProducts = ({ GameList, getAllPlatforms, getAllGenres,  GenreList, Pla
     }
 
     let Search = () => {
-        if (SearchString == "" && SearchPlatform == "" && SearchGenre == "") {
+        if (SearchString == "" && (SearchPlatform == false || SearchPlatform == undefined) && (SearchGenre == false || SearchGenre == undefined)) {
             return UploadPagination(GamePagination);
         }
         else {
 
-
-
             const tmpList = GameListVM.slice();
 
-            let search_genre_id = "";
-            let search_platforn_id = "";
-            if (SearchGenre != "") {
+            let search_genre_id = [];
+            let search_platforn_id = [];
+            if (SearchGenre != false && SearchGenre != undefined) {
                 GenreList.forEach((item) => {
-                    if (item.Name == SearchGenre) {
-                        search_genre_id = item.Id;
-                    }
+                    SearchGenre.forEach((item2) => {
+                        if (item.Name == item2) {
+                            search_genre_id.push(item.Id);
+                        }
+                    })
                 })
             }
-            if (SearchPlatform != "") {
+            if (SearchPlatform != false && SearchPlatform != undefined) {
                 PlatformList.forEach((item) => {
-                    if (item.Name == SearchPlatform) {
-                        search_platforn_id = item.Id;
-                    }
+                    SearchPlatform.forEach((item2) => {
+                        if (item.Name == item2) {
+                            search_platforn_id.push(item.Id);
+                        }
+                    })
                 })
             }
-
-            console.log("GameListVM", GameListVM)
 
             if (SearchString != "") {
                 let searchedGames = tmpList.filter(game => game.Name.includes(SearchString));
                 let searchedGames2 = [];
-                if (search_genre_id != "" && search_platforn_id != "") {
-                    searchedGames2 = searchedGames.filter(game => game.GenreIds[0] == search_genre_id && game.PlatformIds[0] == search_platforn_id)
+                let searchedGames3 = [];
+                if (search_genre_id != false && search_genre_id != undefined && search_platforn_id != false && search_platforn_id != undefined) {
+                    /*searchedGames2 = searchedGames.filter(game => game.GenreIds[0] == search_genre_id && game.PlatformIds[0] == search_platforn_id)*/
+                    searchedGames.forEach((item) => {
+                        search_genre_id.forEach((item2) => {
+                            if (item.GenreIds[0] == item2) {
+                                searchedGames2.push(item);
+                            }
+                        })
+                        search_platforn_id.forEach((item2) => {
+                            if (item.PlatformIds[0] == item2) {
+                                searchedGames3.push(item);
+                            }
+                        })
+                    })
 
-                }
-                else if (search_genre_id != "" && search_platforn_id == "") {
-                    searchedGames2 = searchedGames.filter(game => game.GenreIds[0] == search_genre_id)
-                }
-                else if (search_genre_id == "" && search_platforn_id != "") {
-                    searchedGames2 = searchedGames.filter(game => game.PlatformIds[0] == search_platforn_id)
-                }
-                else {
-                    return searchedGames;
-                }
+                    let searchedGames4 = searchedGames2;
+                    searchedGames3.forEach((item) => {
+                        let ok = true;
+                        searchedGames2.forEach((item2) => {
+                            if (item.Id_Game == item2.Id_Game) {
+                                ok = false;
+                            }
+                        })
+                        if (ok == true) {
+                            searchedGames4.push(item);
+                        }
+                    })
 
+                    return searchedGames4;
+                }
+                else if ((search_genre_id != false && search_genre_id != undefined) && search_platforn_id == false || search_platforn_id == undefined) {
+                    searchedGames.forEach((item) => {
+                        search_genre_id.forEach((item2) => {
+                            if (item.GenreIds[0] == item2) {
+                                searchedGames2.push(item);
+                            }
+                        })
+                    })
 
-                return searchedGames2;
+                    return searchedGames2;
+                }
+                else if (search_genre_id == false || search_genre_id == undefined && (search_platforn_id != false && search_platforn_id != undefined)) {
+                    searchedGames.forEach((item) => {
+                        search_platforn_id.forEach((item2) => {
+                            if (item.PlatformIds[0] == item2) {
+                                searchedGames3.push(item);
+                            }
+                        })
+                    })
+
+                    return searchedGames3;
+                }
+                else return searchedGames;
             }
             else {
                 let searchedGames = tmpList.slice();
-                let searchedGames2 = tmpList.slice();
-                if (search_genre_id != "" && search_platforn_id != "") {
-                    return searchedGames2 = searchedGames.filter(game => game.GenreIds[0] == search_genre_id && game.PlatformIds[0] == search_platforn_id)
-                }
-                else if (search_genre_id != "" && search_platforn_id == "") {
-                    return searchedGames2 = searchedGames.filter(game => game.GenreIds[0] == search_genre_id)
-                }
-                else if (search_genre_id == "" && search_platforn_id != "") {
-                    return searchedGames2 = searchedGames.filter(game => game.PlatformIds[0] == search_platforn_id)
-                }
-                else {
-                    return searchedGames;
-                }
+                let searchedGames2 = [];
+                let searchedGames3 = [];
+                if (search_genre_id != false && search_genre_id != undefined && search_platforn_id != false && search_platforn_id != undefined) {
+                    /*searchedGames2 = searchedGames.filter(game => game.GenreIds[0] == search_genre_id && game.PlatformIds[0] == search_platforn_id)*/
+                    searchedGames.forEach((item) => {
+                        search_genre_id.forEach((item2) => {
+                            if (item.GenreIds[0] == item2) {
+                                searchedGames2.push(item);
+                            }
+                        })
+                        search_platforn_id.forEach((item2) => {
+                            if (item.PlatformIds[0] == item2) {
+                                searchedGames3.push(item);
+                            }
+                        })
+                    })
 
 
-                return searchedGames;
+                    let searchedGames4 = searchedGames2;
+                    searchedGames3.forEach((item) => {
+                        let ok = true;
+                        searchedGames2.forEach((item2) => {
+                            if (item.Id_Game == item2.Id_Game) {
+                                ok = false;
+                            }
+                        })
+                        if (ok == true) {
+                            searchedGames4.push(item);
+                        }
+                    })
+
+                    return searchedGames4;
+
+                    
+                }
+                else if ((search_genre_id != false && search_genre_id != undefined) && search_platforn_id == false || search_platforn_id == undefined) {
+                    searchedGames.forEach((item) => {
+                        search_genre_id.forEach((item2) => {
+                            if (item.GenreIds[0] == item2) {
+                                searchedGames2.push(item);
+                            }
+                        })
+                    })
+
+                    return searchedGames2;
+                }
+                else if (search_genre_id == false || search_genre_id == undefined && (search_platforn_id != false && search_platforn_id != undefined)) {
+                    searchedGames.forEach((item) => {
+                        search_platforn_id.forEach((item2) => {
+                            if (item.PlatformIds[0] == item2) {
+                                searchedGames3.push(item);
+                            }
+                        })
+                    })
+
+                    return searchedGames3;
+                }
+                else return searchedGames;
             }
         }
     }

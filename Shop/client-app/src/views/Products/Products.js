@@ -26,7 +26,7 @@ const Products = () => {
                         </aside>
                         <section className="col-9">
                             <div className="row justify-content-between align-items-center">
-                                <div className="col-4">12 results found</div>
+                                <div className="col-4"></div>
                                 <div className="col-4">
                                     <SideBarSearch />
                                 </div>

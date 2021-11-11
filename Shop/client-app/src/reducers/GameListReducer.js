@@ -2,8 +2,8 @@ const initialState = {
     GameList: [],
     GameListVM: [],
     SearchString: "",
-    SearchGenre: "",
-    SearchPlatform: "",
+    SearchGenre: [],
+    SearchPlatform: [],
     GamePagination: "1",
     CurrentGame: null
 }
