@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { connect } from "react-redux"
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages, faEye, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
@@ -32,7 +33,7 @@ const TableNews = ({ Id, Name, Publisher, ShortDescription, Image, ReleaseDate, 
                 <td>{Name}</td>
                 <td>{Publisher} </td>
                 <td>{ShortDescription}</td>
-                <td>{ReleaseDate}</td>
+                <td>{moment(ReleaseDate).format('L')}</td>
                 <td>Active</td>
                 <td className="table-action">
                     <Link to="/user/views-news" onClick={onGetCurrentNews}>

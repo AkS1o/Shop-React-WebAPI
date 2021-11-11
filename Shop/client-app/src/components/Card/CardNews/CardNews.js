@@ -2,6 +2,9 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux"
+
+import moment from 'moment';
+
 import { getCurrentNews } from "../../../actions/NewsListAction"
 
 const CardNews = ({ Id, Name, Publisher, ShortDescription, Image, ReleaseDate, NewsList, getCurrentNews }) => {
@@ -21,7 +24,7 @@ const CardNews = ({ Id, Name, Publisher, ShortDescription, Image, ReleaseDate, N
                         <img src={imgPath} alt="img" className="img-fluid" />
                     </Link>
                     <div className="card-body">
-                        <div className="subtitle">{ReleaseDate}</div>
+                        <div className="subtitle">{moment(ReleaseDate).format("MMM Do YY")}</div>
                         <div className="subtitle">{Publisher}</div>
                         <h4 className="title">
                             <Link to="#">{ Name }</Link>

@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { connect } from "react-redux"
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages, faEye, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
@@ -30,7 +31,7 @@ const TableProducts = ({ Id, Ganre, Name, Quantity, Price, ReleaseDate, GameList
                     <input type="checkbox" />
                 </td>
                 <td>{Name}</td>
-                <td>{ReleaseDate} </td>
+                <td>{moment(ReleaseDate).format('L')}</td>
                 <td>{Price}</td>
                 <td>{Quantity}</td>
                 <td>Active</td>

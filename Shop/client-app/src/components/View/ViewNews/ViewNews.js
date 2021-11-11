@@ -4,6 +4,8 @@ import { Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
+import moment from 'moment';
+
 
 class DetailsNews extends Component {
     state = {
@@ -37,44 +39,11 @@ class DetailsNews extends Component {
                                 </div>
                                 <div className="content">
                                     <h3>{Name}</h3>
-                                    <div className="meta">{ReleaseDate}</div>
+                                    <div className="meta">{moment(ReleaseDate).format("MMM Do YY")}</div>
                                     <div className="meta">{Publisher}</div>
                                 </div>
                             </div>
                             <div>
-                            {/*    <p>*/}
-                            {/*        Lorem ipsum dolor sit amet, consectetur adipiscing elit.*/}
-                            {/*        Sed augue velit, iaculis nec eleifend vel, facilisis sit*/}
-                            {/*        amet sapien. Mauris efficitur urna tellus, ac iaculis*/}
-                            {/*        libero elementum ac. Vivamus vehicula scelerisque tellus*/}
-                            {/*        sed gravida. Vestibulum quis fermentum elit. Nam pretium*/}
-                            {/*        justo eu dictum egestas. Morbi velit neque, commodo eget*/}
-                            {/*        fermentum sit amet, pretium id nibh. Pellentesque non*/}
-                            {/*        nisl non ex feugiat vestibulum. Integer facilisis nunc*/}
-                            {/*        ut venenatis vulputate.*/}
-                            {/*</p>*/}
-                            {/*    <p>*/}
-                            {/*        Lorem ipsum dolor sit amet, consectetur adipiscing elit.*/}
-                            {/*        Sed augue velit, iaculis nec eleifend vel, facilisis sit*/}
-                            {/*        amet sapien. Mauris efficitur urna tellus, ac iaculis*/}
-                            {/*        libero elementum ac. Vivamus vehicula scelerisque tellus*/}
-                            {/*        sed gravida. Vestibulum quis fermentum elit. Nam pretium*/}
-                            {/*        justo eu dictum egestas. Morbi velit neque, commodo eget*/}
-                            {/*        fermentum sit amet, pretium id nibh. Pellentesque non*/}
-                            {/*        nisl non ex feugiat vestibulum. Integer facilisis nunc*/}
-                            {/*        ut venenatis vulputate.*/}
-                            {/*</p>*/}
-                            {/*    <p>*/}
-                            {/*        Lorem ipsum dolor sit amet, consectetur adipiscing elit.*/}
-                            {/*        Sed augue velit, iaculis nec eleifend vel, facilisis sit*/}
-                            {/*        amet sapien. Mauris efficitur urna tellus, ac iaculis*/}
-                            {/*        libero elementum ac. Vivamus vehicula scelerisque tellus*/}
-                            {/*        sed gravida. Vestibulum quis fermentum elit. Nam pretium*/}
-                            {/*        justo eu dictum egestas. Morbi velit neque, commodo eget*/}
-                            {/*        fermentum sit amet, pretium id nibh. Pellentesque non*/}
-                            {/*        nisl non ex feugiat vestibulum. Integer facilisis nunc*/}
-                            {/*        ut venenatis vulputate.*/}
-                                {/*</p>*/}
                                 { Description}
                             </div>
                         </div>

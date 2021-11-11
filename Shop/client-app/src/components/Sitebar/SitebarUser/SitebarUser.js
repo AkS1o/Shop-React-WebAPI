@@ -52,7 +52,7 @@ const SitebarUser = ({ CurrentBuyer, CurrentBuyerVM, BuyersListVM, getAllNews, g
             let elem3 = document.getElementById("platformsDiv");
             let elem4 = document.getElementById("newsDiv");
 
-            elem1.setAttribute("class", "nav-item visib");
+            elem1.setAttribute("class", "nav-item visib top-line");
             elem2.setAttribute("class", "nav-item visib");
             elem3.setAttribute("class", "nav-item visib");
             elem4.setAttribute("class", "nav-item visib");
